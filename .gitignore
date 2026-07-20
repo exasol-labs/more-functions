@@ -12,3 +12,4 @@ site/
 .venv/
 __pycache__/
 *.pyc
+.build_output
