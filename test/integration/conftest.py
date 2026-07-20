@@ -3,7 +3,7 @@ import pytest
 import exasol.tdbp
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def connection(backend_aware_database_params):
     with pyexasol.connect(**backend_aware_database_params) as conn:
         yield conn

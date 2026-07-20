@@ -6,7 +6,7 @@ begin
     if val is null then
         res := 'NULL';
     else
-        res := '''' || regexp_replace(val, '(''|\|\x00|\x1a)', '\\\1') || '''';
+        res := '''' || replace(val, '''', '''''') || '''';
     end if;
     return res;
 end quote;
