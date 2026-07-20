@@ -7,13 +7,13 @@ Rationale:
 
 Callers need a database-side helper that turns values into SQL string literals without reimplementing quoting rules in every query or script.
 
-Needs: dsn
+Needs: scn, dsn
 
 Covers:
-- `feat~more-functions-collection~1`
+- `feat~scalar-functions~1`
 
 ##### QUOTE: Null Input
-`req~quote-null-input~1`
+`scn~quote-null~1`
 
 **Given** `NULL`
 **When** `quote(value)` is executed
@@ -25,7 +25,7 @@ Covers:
 - `req~quote-function~1`
 
 ##### QUOTE: Empty String Input In Exasol
-`req~quote-empty-string-input~1`
+`scn~quote-empty-string~1`
 
 **Given** an empty string
 **When** Exasol evaluates the call
@@ -38,7 +38,7 @@ Covers:
 - `req~quote-function~1`
 
 ##### QUOTE: Non-empty String
-`req~quote-non-emtpy-string~1`
+`scn~quote-non-empty-string~1`
 
 **Given** a non-empty string value that contains one or more single quote characters
 **When** `quote(value)` is executed
