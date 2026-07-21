@@ -52,6 +52,10 @@ The system consists of these main building blocks:
 
 SQL scalar functions are implemented as standalone Exasol SQL function definitions under `exasol/more_functions/sql/scalar/`.
 
+#### Lua Scalar Functions
+
+Lua scalar functions are implemented as standalone Exasol Lua scalar script definitions under `exasol/more_functions/lua/scalar/`.
+
 #### QUOTE Function Design
 `dsn~quote-function~1`
 
@@ -63,6 +67,19 @@ Needs: impl
 
 Covers:
 - `req~quote-function~1`
+
+#### BIT_COUNT Function Design
+`dsn~bit-count-function~1`
+
+The `bit_count` function is implemented as an Exasol Lua scalar script in [exasol/more_functions/lua/scalar/bit_count.sql](/home/seb/git/more-functions/exasol/more_functions/lua/scalar/bit_count.sql).
+It accepts dynamic input types so callers can pass integer-valued arguments using Exasol's supported numeric expression forms.
+For `NULL` input it returns `NULL`.
+For non-null integer-valued input it counts the set bits in the 64-bit binary representation of the numeric value and returns that count.
+
+Needs: impl
+
+Covers:
+- `req~bit-count-function~1`
 
 ## Runtime View
 
@@ -80,6 +97,13 @@ dsn --> impl, itest : req~area-function~1
 dsn --> impl, itest : scn~quote-null~1
 dsn --> impl, itest : scn~quote-empty-string~1
 dsn --> impl, itest : scn~quote-non-empty-string~1
+
+### BIT_COUNT
+
+dsn --> impl, itest : scn~bit-count-null~1
+dsn --> impl, itest : scn~bit-count-integer-literal~1
+dsn --> impl, itest : scn~bit-count-exact-numeric-integer~1
+dsn --> impl, itest : scn~bit-count-floating-point-integer~1
 
 ## Deployment View
 
@@ -102,6 +126,7 @@ Implementation is verified primarily through integration tests that execute the 
 
 - Functions are documented individually in dedicated requirement files.
 - SQL scalar functions are stored one function per file.
+- Lua scalar functions are stored one function per file.
 - Scenario text remains in the requirement files and is not duplicated in the design.
 
 ## Risks And Technical Debt

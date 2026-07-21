@@ -39,7 +39,7 @@ def run_oft_for_udf_client(session: nox.Session, *args) -> None:
     oft_jar = get_oft_jar(session)
     doc_dir = Path(__file__).parent / "doc"
     src_dir = ROOT / "exasol"
-    test_dir = ROOT / "tests"
+    test_dir = ROOT / "test"
 
     with session.chdir(ROOT):
         session.run(
