@@ -59,7 +59,7 @@ Lua scalar functions are implemented as standalone Exasol Lua scalar script defi
 #### QUOTE Function Design
 `dsn~quote-function~1`
 
-The `quote` function is implemented as an Exasol SQL scalar function in [exasol/more_functions/sql/scalar/quote.sql](/home/seb/git/more-functions/exasol/more_functions/sql/scalar/quote.sql).
+The `quote` function is implemented as an Exasol SQL scalar function.
 It returns the text `NULL` for null input.
 For non-null input it wraps the value in single quotes and escapes embedded single quotes by doubling them.
 
@@ -71,11 +71,10 @@ Covers:
 #### BIT_COUNT Function Design
 `dsn~bit-count-function~1`
 
-The `bit_count` function is implemented as an Exasol Lua scalar script in [exasol/more_functions/lua/scalar/bit_count.sql](/home/seb/git/more-functions/exasol/more_functions/lua/scalar/bit_count.sql).
-It accepts dynamic input types so callers can pass integer-valued arguments using Exasol's supported numeric expression forms.
+The `bit_count` function is implemented as an Exasol Lua scalar script with a `DECIMAL(36,0)` input parameter.
 For `NULL` input it returns `NULL`.
 For non-null integer-valued input it counts the set bits in the binary representation of the numeric value and returns that count.
-To cover `DECIMAL(36,0)` values, the implementation normalizes the value into two 64-bit lanes and counts the set bits in each lane separately.
+To cover the full `DECIMAL(36,0)` range, the implementation normalizes negative values into an unsigned 128-bit representation, splits that representation into four 32-bit blocks, and counts the set bits in each block with Lua integer bit operations.
 
 Needs: impl
 
