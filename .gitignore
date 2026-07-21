@@ -1,0 +1,15 @@
+.idea/
+.nox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+site/
+.venv/
+__pycache__/
+*.pyc
+.build_output/
