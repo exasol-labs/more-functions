@@ -10,6 +10,19 @@ It intentionally omits sections dedicated to user requirements.
 - Behavior is specified in `doc/system_requirements.md` and linked detail files.
 - Verification is performed through automated tests in this repository.
 
+### SQL Functions vs. Lua Scripts
+
+SQL functions are closer to the database engine, so they can be optimized better. That being said, there are a number of technical limitations that narrow down where SQL functions are applicable.
+
+| Feature                           |   SQL Functions    |  Lua Scripts  |
+|-----------------------------------|:------------------:|:-------------:|
+| Parameter type overloading        |                    | ✓[^1]         |
+| Variable-length parameterlist     |                    |       ✓       |
+| Logic                             |    if and loop     | full language |
+| Access to built-in SQL functions  |         ✓          |               |
+
+[^1]: Simulated via variable-length parameter list
+
 ## Context And Scope
 
 `more-functions` provides database-side functions for Exasol users.
@@ -57,6 +70,12 @@ At runtime the caller executes the scalar function inside Exasol.
 The function evaluates the input, distinguishes null from non-null values, performs SQL-literal escaping for single quotes, and returns the resulting string.
 
 The scenario requirements are forwarded to verification without repeating them here:
+
+### AREA (Alias of ST_AREA)
+
+dsn --> impl, itest : req~area-function~1 
+
+### QUOTE
 
 dsn --> impl, itest : scn~quote-null~1
 dsn --> impl, itest : scn~quote-empty-string~1

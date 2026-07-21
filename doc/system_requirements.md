@@ -18,4 +18,5 @@ Status: approved
 
 #### Scalar Functions
 
-- [QUOTE function](system_requirements/scalar_functions/quote.md)
+- [area](system_requirements/scalar_functions/area.md)
+- [QUOTE](system_requirements/scalar_functions/quote.md)
