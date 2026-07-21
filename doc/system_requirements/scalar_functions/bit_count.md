@@ -1,7 +1,7 @@
 ##### BIT_COUNT Function
 `req~bit-count-function~1`
 
-The scalar function `BIT_COUNT(value)` returns the number of bits that are set to `1` in the binary representation of an integer value, compatible with MariaDB's `BIT_COUNT(value)` behavior.
+The scalar function `BIT_COUNT(value)` returns the number of bits that are set to `1` in the binary representation of an integer value.
 
 Needs: scn, dsn
 
