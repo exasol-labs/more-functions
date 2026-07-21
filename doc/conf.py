@@ -46,6 +46,4 @@ linkcheck_delay = 30
 linkcheck_retries = 2
 linkcheck_anchors = False
 linkcheck_ignore: list[str] = []
-linkcheck_allowed_redirects = {
-    r"https://github\.com/.*": r"https://github\.com/login*"
-}
+linkcheck_allowed_redirects = {r"https://github\.com/.*": r"https://github\.com/login*"}

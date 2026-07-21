@@ -1,6 +1,5 @@
 import pyexasol
 import pytest
-
 from exasol.tdbp.dialects.exasol.exasol_object_factory import ExasolObjectFactory
 
 
@@ -9,6 +8,7 @@ def connection(backend_aware_database_params):
     with pyexasol.connect(**backend_aware_database_params) as conn:
         yield conn
 
+
 @pytest.fixture
 def factory(connection):
     factory = ExasolObjectFactory(connection)
@@ -16,9 +16,9 @@ def factory(connection):
     return factory
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def schema(connection):
     factory = ExasolObjectFactory(connection)
-    schema=factory.create_schema("test_schema")
-    connection.execute('open schema ' + schema.fully_qualified_name())
+    schema = factory.create_schema("test_schema")
+    connection.execute("open schema " + schema.fully_qualified_name())
     return schema
