@@ -74,7 +74,8 @@ Covers:
 The `bit_count` function is implemented as an Exasol Lua scalar script in [exasol/more_functions/lua/scalar/bit_count.sql](/home/seb/git/more-functions/exasol/more_functions/lua/scalar/bit_count.sql).
 It accepts dynamic input types so callers can pass integer-valued arguments using Exasol's supported numeric expression forms.
 For `NULL` input it returns `NULL`.
-For non-null integer-valued input it counts the set bits in the 64-bit binary representation of the numeric value and returns that count.
+For non-null integer-valued input it counts the set bits in the binary representation of the numeric value and returns that count.
+To cover `DECIMAL(36,0)` values, the implementation normalizes the value into two 64-bit lanes and counts the set bits in each lane separately.
 
 Needs: impl
 

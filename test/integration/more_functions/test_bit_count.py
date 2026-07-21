@@ -12,11 +12,15 @@ class TestBitCount(ScalarFunctionTestBase):
     @pytest.mark.parametrize(
         "expression, expected",
         [
-            ("29", 4),
-            ("cast(29 as decimal(18,0))", 4),
-            ("cast(29 as decimal(18,2))", 4),
-            ("cast(29 as double precision)", 4),
-            ("0", 0),
+            ("29", "4"),
+            ("cast(29 as decimal(18,0))", "4"),
+            ("cast(29 as decimal(18,2))", "4"),
+            ("cast(29 as double precision)", "4"),
+            (
+                f"cast({0b1_0000000001_0000000001_0000000010_11111} as decimal(36,0))",
+                "9",
+            ),
+            ("0", "0"),
         ],
     )
     def test_bit_count(self, expression, expected):
