@@ -3,10 +3,6 @@
 
 The scalar function `BIT_COUNT(value)` returns the number of bits that are set to `1` in the binary representation of an integer value, compatible with MariaDB's `BIT_COUNT(value)` behavior.
 
-Rationale:
-
-Callers need a database-side helper for counting set bits without reimplementing bit-count logic in every query or script.
-
 Needs: scn, dsn
 
 Covers:
