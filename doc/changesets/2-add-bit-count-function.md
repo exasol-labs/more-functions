@@ -38,37 +38,37 @@ The implementation should stay aligned with the repository structure by introduc
 
 ## Task List
 
-- [ ] Create and checkout a new Git branch `feature/2-add-bit-count-function`
+- [x] Create and checkout a new Git branch `feature/2-add-bit-count-function`
 
 ### Requirements And Design
 
-- [ ] Add `BIT_COUNT` to the scalar-function index in `doc/system_requirements.md`
-- [ ] Create `doc/system_requirements/scalar_functions/bit_count.md` with one user-facing requirement for MariaDB-compatible bit counting and scenario items for representative Exasol integer argument forms
-- [ ] Stop and ask user for a review of the system requirements
-- [ ] Extend `doc/design.md` with `dsn~bit-count-function~1` describing the Lua scalar function location, runtime behavior, and forwarding from scenarios to `impl` and `itest`
-- [ ] Add a compact agent file that explains which repository files and trace artifacts must be updated when introducing a new function
-- [ ] Stop and ask user for a review of the design
+- [x] Add `BIT_COUNT` to the scalar-function index in `doc/system_requirements.md`
+- [x] Create `doc/system_requirements/scalar_functions/bit_count.md` with one user-facing requirement for MariaDB-compatible bit counting and scenario items for representative Exasol integer argument forms
+- [x] Stop and ask user for a review of the system requirements
+- [x] Extend `doc/design.md` with `dsn~bit-count-function~1` describing the Lua scalar function location, runtime behavior, and forwarding from scenarios to `impl` and `itest`
+- [x] Add a compact agent file that explains which repository files and trace artifacts must be updated when introducing a new function
+- [x] Stop and ask user for a review of the design
 
 ### Implementation
 
-- [ ] Add the Lua scalar function source for `BIT_COUNT` under the repository's Exasol function tree
-- [ ] Extend test utilities as needed so integration tests can load and execute the Lua scalar function without duplicating setup logic
-- [ ] Update the list of functions this project add under `doc/user_guide/function_coverage.md`
-- [ ] Add OFT implementation coverage tags for the new design and scenario items
+- [x] Add the Lua scalar function source for `BIT_COUNT` under the repository's Exasol function tree
+- [x] Extend test utilities as needed so integration tests can load and execute the Lua scalar function without duplicating setup logic
+- [x] Update the list of functions this project add under `doc/user_guide/function_coverage.md`
+- [x] Add OFT implementation coverage tags for the new design and scenario items
 
 ### Verification
 
-- [ ] Add integration tests that prove `BIT_COUNT` works for the supported Exasol integer input variants named in the issue acceptance criteria
-- [ ] Add OFT integration-test coverage tags for the new design and scenario items
-- [ ] Fix the OFT input path in `noxfile.py` from `tests` to `test` so trace verification covers the actual test directory
-- [ ] Keep the OpenFastTrace trace clean for the updated requirement, design, implementation, and integration-test artifacts
-- [ ] Keep the relevant integration-test and toolbox verification tasks green
+- [x] Add integration tests that prove `BIT_COUNT` works for the supported Exasol integer input variants named in the issue acceptance criteria
+- [x] Add OFT integration-test coverage tags for the new design and scenario items
+- [x] Fix the OFT input path in `noxfile.py` from `tests` to `test` so trace verification covers the actual test directory
+- [x] Keep the OpenFastTrace trace clean for the updated requirement, design, implementation, and integration-test artifacts
+- [x] Keep the relevant integration-test and toolbox verification tasks green
 
 ### Update User Documentation
 
-- [ ] Update `doc/user_guide/function_coverage.md` to mark `BIT_COUNT` as provided by `more-functions`
-- [ ] Update `README.rst` or other user-facing function overview documentation if `BIT_COUNT` needs to be listed there
+- [x] Update `doc/user_guide/function_coverage.md` to mark `BIT_COUNT` as provided by `more-functions`
+- [x] Update `README.rst` or other user-facing function overview documentation if `BIT_COUNT` needs to be listed there
 
 ## Version And Changelog Update
 
-- [ ] Add an unreleased changelog entry for `BIT_COUNT` and the new agent guidance in `doc/changes/unreleased.md`
+- [x] Add an unreleased changelog entry for `BIT_COUNT` and the new agent guidance in `doc/changes/unreleased.md`
