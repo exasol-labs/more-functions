@@ -6,6 +6,7 @@ import nox
 from exasol.toolbox.nox.tasks import *
 
 ROOT = Path(__file__).parent
+LUA_TEST_ENVIRONMENT = ROOT / ".lua-test"
 
 # default actions to be run if nothing is explicitly specified with the -s option
 nox.options.sessions = ["format:check"]
@@ -54,6 +55,29 @@ def run_oft_for_udf_client(session: nox.Session, *args) -> None:
             f"{test_dir}",
             *args,
         )
+
+
+@nox.session(name="test:lua", python=False)
+def run_lua_unit_tests(session: nox.Session):
+    """Install the project-local Lua test tools and run the Lua unit tests."""
+    lua_bin_dir = LUA_TEST_ENVIRONMENT / "bin"
+    luarocks = lua_bin_dir / "luarocks"
+    busted = lua_bin_dir / "busted"
+
+    if not luarocks.exists():
+        session.run(
+            "poetry",
+            "run",
+            "hererocks",
+            str(LUA_TEST_ENVIRONMENT),
+            "--lua",
+            "5.4",
+            "--luarocks",
+            "latest",
+        )
+    if not busted.exists():
+        session.run(str(luarocks), "install", "busted", "2.3.0-1")
+    session.run(str(busted), "test/unit/lua")
 
 
 @nox.session(name="oft:trace", python=False)

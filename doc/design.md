@@ -69,17 +69,17 @@ Covers:
 - `req~quote-function~1`
 
 #### BIT_COUNT Function Design
-`dsn~bit-count-function~1`
+`dsn~bit-count-function~2`
 
 The `bit_count` function is implemented as an Exasol Lua scalar script with a `DECIMAL(36,0)` input parameter.
 For `NULL` input it returns `NULL`.
-For non-null integer-valued input it counts the set bits in the binary representation of the numeric value and returns that count.
-To cover the full `DECIMAL(36,0)` range, the implementation normalizes negative values into an unsigned 128-bit representation, splits that representation into four 32-bit blocks, and counts the set bits in each block with Lua integer bit operations.
+For non-null integer-valued input it counts the set bits in the low 64 bits and returns that count.
+The implementation normalizes negative values into a two's-complement representation, extracts its two low 32-bit blocks, and counts the set bits in each block with Lua integer bit operations. It deliberately does not process higher blocks; in particular, it retains the upper 32-bit block of the low 64-bit word.
 
 Needs: impl
 
 Covers:
-- `req~bit-count-function~1`
+- `req~bit-count-function~2`
 
 ## Runtime View
 
@@ -104,6 +104,7 @@ dsn --> impl, itest : scn~bit-count-null~1
 dsn --> impl, itest : scn~bit-count-integer-literal~1
 dsn --> impl, itest : scn~bit-count-exact-numeric-integer~1
 dsn --> impl, itest : scn~bit-count-floating-point-integer~1
+dsn --> impl, itest : scn~bit-count-ignore-higher-bits~1
 
 ## Deployment View
 
@@ -133,6 +134,26 @@ Implementation is verified primarily through integration tests that execute the 
 
 - SQL and Lua functions may require different testing and deployment patterns.
 - Exasol-specific behavior such as empty-string handling must be documented explicitly to avoid false assumptions.
+
+## Open Issues
+
+### Functions That Need to be Implemented in the Core Database
+
+The following functions were investigated in the cause of creating `more-functions` and were deemed to be not feasible with SQL functions, Lua Scripts and UDFs
+
+#### ADDDATE / DATE_ADD, ADDTIME / TIME_ADD
+
+Requires complex interval types as parameters which Exasol does not have yet.
+
+#### BENCHMARK
+
+```sql
+BENCHMARK(n, <expression>)
+```
+
+The second parameter of benchmark works like a function pointer, since benchmark runs the given function _n_ times to allow timing it. Such a function pointer is not possible with add-on-functions. 
+
+
 
 ## Glossary
 
