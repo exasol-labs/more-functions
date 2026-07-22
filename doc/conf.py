@@ -36,6 +36,9 @@ exclude_patterns = [
     ".DS_Store",
     ".build-docu",
     "changesets/**",
+    "design.md",
+    "system_requirements.md",
+    "system_requirements/**",
 ]
 
 html_theme = "shibuya"
