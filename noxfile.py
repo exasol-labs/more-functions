@@ -55,6 +55,7 @@ def run_oft(session: nox.Session, *args) -> None:
             *args,
         )
 
+
 @nox.session(name="oft:trace", python=False)
 def run_oft_udf_client_plaintext(session: nox.Session):
     """
