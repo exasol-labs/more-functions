@@ -1,4 +1,4 @@
-##### QUOTE Function
+# QUOTE
 `req~quote-function~1`
 
 The scalar SQL function `quote(value)` converts an input value into an SQL string literal representation that can be embedded into generated SQL statements safely with respect to single-quote escaping.
@@ -12,7 +12,7 @@ Needs: scn, dsn
 Covers:
 - `feat~scalar-functions~1`
 
-##### QUOTE: Null Input
+## QUOTE: Null Input
 `scn~quote-null~1`
 
 **Given** `NULL`
@@ -24,7 +24,7 @@ Needs: dsn
 Covers:
 - `req~quote-function~1`
 
-##### QUOTE: Empty String Input In Exasol
+## QUOTE: Empty String Input In Exasol
 `scn~quote-empty-string~1`
 
 **Given** an empty string
@@ -37,7 +37,7 @@ Needs: dsn
 Covers:
 - `req~quote-function~1`
 
-##### QUOTE: Non-empty String
+## QUOTE: Non-empty String
 `scn~quote-non-empty-string~1`
 
 **Given** a non-empty string value that contains one or more single quote characters
