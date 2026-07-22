@@ -33,7 +33,6 @@ dev = [
     "exasol-integration-test-docker-environment>=5.0.0,<7",
     "test-db-builder-python>1.0.0,<2",
     "exasol-toolbox>=10.0.0,<11",
-    "hererocks==0.25.1",
     "pyexasol>=2.0.0,<3",
     "pytest>=9.0.0,<10",
     "pytest-exasol-backend>=1.3.0,<2",

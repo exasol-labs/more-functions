@@ -6,7 +6,6 @@ import nox
 from exasol.toolbox.nox.tasks import *
 
 ROOT = Path(__file__).parent
-LUA_TEST_ENVIRONMENT = ROOT / ".lua-test"
 
 # default actions to be run if nothing is explicitly specified with the -s option
 nox.options.sessions = ["format:check"]
@@ -36,7 +35,7 @@ def get_oft_jar(session: nox.Session) -> Path:
     return oft_jar
 
 
-def run_oft_for_udf_client(session: nox.Session, *args) -> None:
+def run_oft(session: nox.Session, *args) -> None:
     oft_jar = get_oft_jar(session)
     doc_dir = Path(__file__).parent / "doc"
     src_dir = ROOT / "exasol"
@@ -56,36 +55,12 @@ def run_oft_for_udf_client(session: nox.Session, *args) -> None:
             *args,
         )
 
-
-@nox.session(name="test:lua", python=False)
-def run_lua_unit_tests(session: nox.Session):
-    """Install the project-local Lua test tools and run the Lua unit tests."""
-    lua_bin_dir = LUA_TEST_ENVIRONMENT / "bin"
-    luarocks = lua_bin_dir / "luarocks"
-    busted = lua_bin_dir / "busted"
-
-    if not luarocks.exists():
-        session.run(
-            "poetry",
-            "run",
-            "hererocks",
-            str(LUA_TEST_ENVIRONMENT),
-            "--lua",
-            "5.4",
-            "--luarocks",
-            "latest",
-        )
-    if not busted.exists():
-        session.run(str(luarocks), "install", "busted", "2.3.0-1")
-    session.run(str(busted), "test/unit/lua")
-
-
 @nox.session(name="oft:trace", python=False)
 def run_oft_udf_client_plaintext(session: nox.Session):
     """
     Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" printing the output to stdout.
     """
-    run_oft_for_udf_client(session)
+    run_oft(session)
 
 
 @nox.session(name="oft:trace-html", python=False)
@@ -94,4 +69,4 @@ def run_oft_udf_client_html(session: nox.Session):
     Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" creating a html page as output.
     """
     html_file = session.posargs[0] if session.posargs else "report.html"
-    run_oft_for_udf_client(session, "-o", "html", "-f", html_file)
+    run_oft(session, "-o", "html", "-f", html_file)

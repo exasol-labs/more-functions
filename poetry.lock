@@ -1392,18 +1392,6 @@ files = [
 ]
 
 [[package]]
-name = "hererocks"
-version = "0.25.1"
-description = "Tool for installing Lua and LuaRocks locally"
-optional = false
-python-versions = "*"
-groups = ["dev"]
-files = [
-    {file = "hererocks-0.25.1-py3-none-any.whl", hash = "sha256:43d5e9283588f83aeb703d6d9bc74249d2fa75126638699ca5fdfd1782f47909"},
-    {file = "hererocks-0.25.1.tar.gz", hash = "sha256:a88b73693cf7753cf7e4139247a81f03c71bac4cb035f5d6bfe20dcddd86d100"},
-]
-
-[[package]]
 name = "html5lib"
 version = "1.1"
 description = "HTML parser based on the WHATWG HTML specification"
@@ -4818,4 +4806,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.14"
-content-hash = "39e381cd1bc9a9d3b90b98f6c7435528f59388d23deb1e8f2cdf870b790120eb"
+content-hash = "ec5b485d7f25fdefa697f4299830ac809715a55e1190087f2fe35d171031d4ff"
