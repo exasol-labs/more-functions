@@ -18,6 +18,7 @@ local function count_set_bits_32(value)
     return count
 end
 
+-- [impl -> dsn~bit-count-ignore-higher-bits~1]
 local function count_lower_64_bits(value)
     local normalized = value
     local invert = normalized < ZERO
@@ -45,7 +46,6 @@ function run(ctx)
     -- [impl -> dsn~bit-count-integer-literal~1]
     -- [impl -> dsn~bit-count-exact-numeric-integer~1]
     -- [impl -> dsn~bit-count-floating-point-integer~1]
-    -- [impl -> dsn~bit-count-ignore-higher-bits~1]
     return decimal(count_lower_64_bits(ctx.val), 2, 0)
 end
 /
