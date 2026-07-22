@@ -30,7 +30,13 @@ source_suffix = {
 
 todo_include_todos = True
 templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".build-docu"]
+exclude_patterns = [
+    "_build",
+    "Thumbs.db",
+    ".DS_Store",
+    ".build-docu",
+    "changesets/**",
+]
 
 html_theme = "shibuya"
 html_static_path = ["_static"]
