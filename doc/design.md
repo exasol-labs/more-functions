@@ -48,13 +48,9 @@ The system consists of these main building blocks:
 - Lua functions
 - automated tests
 
-#### SQL Scalar Functions
+### SQL Scalar Functions
 
 SQL scalar functions are implemented as standalone Exasol SQL function definitions under `exasol/more_functions/sql/scalar/`.
-
-#### Lua Scalar Functions
-
-Lua scalar functions are implemented as standalone Exasol Lua scalar script definitions under `exasol/more_functions/lua/scalar/`.
 
 #### QUOTE Function Design
 `dsn~quote-function~1`
@@ -67,6 +63,10 @@ Needs: impl
 
 Covers:
 - `req~quote-function~1`
+
+### Lua Scalar Functions
+
+Lua scalar functions are implemented as standalone Exasol Lua scalar script definitions under `exasol/more_functions/lua/scalar/`.
 
 #### BIT_COUNT Function Design
 `dsn~bit-count-function~2`
