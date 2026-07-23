@@ -27,9 +27,10 @@ class ScalarFunctionTestBase:
         if function_file.suffix != ".lua":
             return source
         # [impl -> dsn~lua-function-source-header~1]
-        return "\n".join(
-            line.removeprefix("--| ") for line in source.splitlines()
-        ) + "\n/\n"
+        return (
+            "\n".join(line.removeprefix("--| ") for line in source.splitlines())
+            + "\n/\n"
+        )
 
     def assert_query(self, query, expected_result):
         result = self.connection.execute(query).fetchall()
