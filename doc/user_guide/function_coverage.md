@@ -48,7 +48,7 @@ Sources:
 | `BINLOG_GTID_POS`                      | scalar   | information        | ✓       |                                   |
 | `BIT_AND`                              | set      | aggregate          | ✓       | ✓                                 |
 | `BIT_CHECK`                            | scalar   | bitwise            |         | ✓                                 |
-| `BIT_COUNT`                            | scalar   | bitwise            | ✓       |                                   |
+| `BIT_COUNT`                            | scalar   | bitwise            | ✓       | +                                 |
 | `BIT_LENGTH`                           | scalar   | string             | ✓       | ✓                                 |
 | `BIT_LROTATE`                          | scalar   | bitwise            |         | ✓                                 |
 | `BIT_LSHIFT`                           | scalar   | bitwise            |         | ✓                                 |
