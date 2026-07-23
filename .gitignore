@@ -10,6 +10,9 @@ dist/
 build/
 site/
 .venv/
+.lua-test/
 __pycache__/
 *.pyc
 .build_output/
+.html-documentation
+.codex/

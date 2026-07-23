@@ -35,11 +35,11 @@ def get_oft_jar(session: nox.Session) -> Path:
     return oft_jar
 
 
-def run_oft_for_udf_client(session: nox.Session, *args) -> None:
+def run_oft(session: nox.Session, *args) -> None:
     oft_jar = get_oft_jar(session)
     doc_dir = Path(__file__).parent / "doc"
     src_dir = ROOT / "exasol"
-    test_dir = ROOT / "tests"
+    test_dir = ROOT / "test"
 
     with session.chdir(ROOT):
         session.run(
@@ -61,13 +61,38 @@ def run_oft_udf_client_plaintext(session: nox.Session):
     """
     Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" printing the output to stdout.
     """
-    run_oft_for_udf_client(session)
+    run_oft(session)
 
 
 @nox.session(name="oft:trace-html", python=False)
 def run_oft_udf_client_html(session: nox.Session):
     """
-    Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" creating a html page as output.
+    Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" creating an HTML page as output.
     """
     html_file = session.posargs[0] if session.posargs else "report.html"
-    run_oft_for_udf_client(session, "-o", "html", "-f", html_file)
+    run_oft(session, "-o", "html", "-f", html_file)
+
+
+@nox.session(name="lua:lint", python=False)
+def lint_lua(session: nox.Session) -> None:
+    """Check the Lua function sources with the installed linter."""
+    session.run(
+        "bash",
+        "-c",
+        'eval "$(luarocks --local path)" && '
+        "luacheck exasol/more_functions/lua "
+        "--globals decimal null run",
+    )
+
+
+@nox.session(name="lua:install-dependencies", python=False)
+def install_lua_dependencies(session: nox.Session) -> None:
+    """Install the Lua dependencies declared by this project."""
+    session.run(
+        "luarocks",
+        "--lua-version=5.4",
+        "--local",
+        "install",
+        "--only-deps",
+        "more-functions-0.1.0-1.rockspec",
+    )

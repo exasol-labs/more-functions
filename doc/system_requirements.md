@@ -18,5 +18,6 @@ Status: approved
 
 #### Scalar Functions
 
-- [area](system_requirements/scalar_functions/area.md)
+- [AREA](system_requirements/scalar_functions/area.md)
+- [BIT_COUNT](system_requirements/scalar_functions/bit_count.md)
 - [QUOTE](system_requirements/scalar_functions/quote.md)
