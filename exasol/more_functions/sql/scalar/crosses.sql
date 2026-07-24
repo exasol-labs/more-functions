@@ -1,3 +1,3 @@
 -- [impl -> dsn~st-alias-functions~1]
-create or replace function crosses (left_value varchar(2000000), right_value varchar(2000000)) return boolean is begin return st_crosses(left_value, right_value); end crosses;
+create or replace function crosses (left_value geometry, right_value geometry) return boolean is begin return st_crosses(left_value, right_value); end crosses;
 /

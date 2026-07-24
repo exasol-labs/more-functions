@@ -1,3 +1,3 @@
 -- [impl -> dsn~st-alias-functions~1]
-create or replace function envelope (value varchar(2000000)) return varchar(2000000) is begin return st_envelope(value); end envelope;
+create or replace function envelope (value geometry) return geometry is begin return st_envelope(value); end envelope;
 /

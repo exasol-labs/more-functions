@@ -1,5 +1,5 @@
 -- [impl -> dsn~st-alias-functions~1]
-create or replace function area (val varchar(2000000))
+create or replace function area (val geometry)
 return double
 is
 begin
