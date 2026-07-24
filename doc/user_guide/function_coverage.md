@@ -496,7 +496,8 @@ Sources:
 | `ST_Validate`                          | scalar   | geo                | ✓      | ✓                                 |
 | `ST_WITHIN`                            | scalar   | geo                | ✓      | ✓                                 |
 | `ST_X`                                 | scalar   | geo                | ✓      | ✓                                 |
-| `ST_Y`                                 | scalar   | geo                | ✓      |                                    | ✓                                 || `STARTPOINT`                           | scalar   | geo                | ✓       | ✓ → ST_STARTPOINT                 |
+| `ST_Y`                                 | scalar   | geo                | ✓       | ✓                                 |
+| `STARTPOINT`                           | scalar   | geo                | ✓       | + → ST_STARTPOINT                 |
 | `STD`                                  | set      | aggregate          | ✓      |                                    |
 | `STDDEV`                               | set      | aggregate          | ✓      | ✓                                 |
 | `STDDEV_POP`                           | set      | aggregate          | ✓      | ✓                                 |
