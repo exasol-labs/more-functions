@@ -21,3 +21,4 @@ Status: approved
 - [AREA](system_requirements/scalar_functions/area.md)
 - [BIT_COUNT](system_requirements/scalar_functions/bit_count.md)
 - [QUOTE](system_requirements/scalar_functions/quote.md)
+- [ST_* Aliases](system_requirements/scalar_functions/st_aliases.md)
