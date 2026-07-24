@@ -1,6 +1,7 @@
 -- [impl -> dsn~bit-count-function~2]
-CREATE OR REPLACE LUA SCALAR SCRIPT bit_count (val DECIMAL(36,0))
-RETURNS DECIMAL(2,0) AS
+-- [impl -> dsn~lua-function-source-header~1]
+--| CREATE OR REPLACE LUA SCALAR SCRIPT bit_count (val DECIMAL(36,0))
+--| RETURNS DECIMAL(2,0) AS
 local ZERO = decimal(0, 36, 0)
 local ONE = decimal(1, 36, 0)
 local TWO_TO_32 = decimal("4294967296", 36, 0)
@@ -48,4 +49,3 @@ function run(ctx)
     -- [impl -> dsn~bit-count-floating-point-integer~1]
     return decimal(count_lower_64_bits(ctx.val), 2, 0)
 end
-/

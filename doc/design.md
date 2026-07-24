@@ -68,6 +68,20 @@ Covers:
 
 Lua scalar functions are implemented as standalone Exasol Lua scalar script definitions under `exasol/more_functions/lua/scalar/`.
 
+#### Function Source Loader Selection
+`dsn~function-source-loader-selection~1`
+
+The integration-test function loader selects the source format from the file extension: SQL function definitions use `.sql` files and Lua function sources use `.lua` files. SQL source content is executed unchanged; Lua source content is prepared according to the Lua source-header design.
+
+Needs: impl, utest
+
+#### Lua Function Source Header
+`dsn~lua-function-source-header~1`
+
+Lua function sources are stored as `.lua` files in their respective function categories. Their Exasol SQL declaration lines use the `--| ` prefix; the remaining lines are ordinary Lua code. Before execution, the Lua loader removes the prefix from the declaration lines and appends the SQL script terminator.
+
+Needs: impl, utest
+
 #### BIT_COUNT Function Design
 `dsn~bit-count-function~2`
 

@@ -67,7 +67,32 @@ def run_oft_udf_client_plaintext(session: nox.Session):
 @nox.session(name="oft:trace-html", python=False)
 def run_oft_udf_client_html(session: nox.Session):
     """
-    Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" creating a html page as output.
+    Downloads (if needed) OFT and executes it for the udf client for tag "V2,_" creating an HTML page as output.
     """
     html_file = session.posargs[0] if session.posargs else "report.html"
     run_oft(session, "-o", "html", "-f", html_file)
+
+
+@nox.session(name="lua:lint", python=False)
+def lint_lua(session: nox.Session) -> None:
+    """Check the Lua function sources with the installed linter."""
+    session.run(
+        "bash",
+        "-c",
+        'eval "$(luarocks --local path)" && '
+        "luacheck exasol/more_functions/lua "
+        "--globals decimal null run",
+    )
+
+
+@nox.session(name="lua:install-dependencies", python=False)
+def install_lua_dependencies(session: nox.Session) -> None:
+    """Install the Lua dependencies declared by this project."""
+    session.run(
+        "luarocks",
+        "--lua-version=5.4",
+        "--local",
+        "install",
+        "--only-deps",
+        "more-functions-0.1.0-1.rockspec",
+    )

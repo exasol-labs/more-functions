@@ -1,0 +1,26 @@
+workflows:
+  - name: checks
+    step_customizations:
+      - action: INSERT_AFTER
+        job: lint-code
+        step_id: set-up-python-and-poetry-environment
+        content:
+          - name: Install Lua and LuaRocks
+            id: install-lua-and-luarocks
+            run: |
+              sudo apt-get update
+              sudo apt-get install --no-install-recommends --yes lua5.4 liblua5.4-dev luarocks
+      - action: INSERT_AFTER
+        job: lint-code
+        step_id: lint-code
+        content:
+          - name: Lint Lua
+            id: lint-lua
+            run: poetry run -- nox -s lua:lint
+      - action: INSERT_AFTER
+        job: lint-code
+        step_id: install-lua-and-luarocks
+        content:
+          - name: Install Lua Dependencies
+            id: install-lua-dependencies
+            run: poetry run -- nox -s lua:install-dependencies

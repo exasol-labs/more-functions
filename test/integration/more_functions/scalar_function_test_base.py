@@ -9,16 +9,28 @@ class ScalarFunctionTestBase:
         self.connection = connection
 
     def load_function(self, name):
-        sql_files = [
+        # [impl -> dsn~function-source-loader-selection~1]
+        function_files = [
             Path("exasol/more_functions/sql/scalar") / f"{name}.sql",
-            Path("exasol/more_functions/lua/scalar") / f"{name}.sql",
+            Path("exasol/more_functions/lua/scalar") / f"{name}.lua",
         ]
-        function_file = next((path for path in sql_files if path.exists()), None)
+        function_file = next((path for path in function_files if path.exists()), None)
         if function_file is None:
             msg = f"Could not find function definition for {name!r}"
             raise FileNotFoundError(msg)
         with function_file.open() as file:
-            self.connection.execute(file.read())
+            source = file.read()
+        self.connection.execute(self._prepare_function_source(function_file, source))
+
+    @staticmethod
+    def _prepare_function_source(function_file, source):
+        if function_file.suffix != ".lua":
+            return source
+        # [impl -> dsn~lua-function-source-header~1]
+        return (
+            "\n".join(line.removeprefix("--| ") for line in source.splitlines())
+            + "\n/\n"
+        )
 
     def assert_query(self, query, expected_result):
         result = self.connection.execute(query).fetchall()

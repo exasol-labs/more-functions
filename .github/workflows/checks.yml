@@ -80,10 +80,21 @@ jobs:
           python-version: ${{ matrix.python-versions }}
           poetry-version: "2.3.0"
 
+      - name: Install Lua and LuaRocks
+        id: install-lua-and-luarocks
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes lua5.4 liblua5.4-dev luarocks
+      - name: Install Lua Dependencies
+        id: install-lua-dependencies
+        run: poetry run -- nox -s lua:install-dependencies
       - name: Lint Code
         id: lint-code
         run: poetry run -- nox -s lint:code
 
+      - name: Lint Lua
+        id: lint-lua
+        run: poetry run -- nox -s lua:lint
       - name: Upload Artifacts
         id: upload-artifacts
         uses: actions/upload-artifact@v7
