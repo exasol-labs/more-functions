@@ -82,13 +82,11 @@ jobs:
 
       - name: Install Lua and LuaRocks
         id: install-lua-and-luarocks
-        if: matrix.python-versions == '3.12'
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends --yes lua5.4 liblua5.4-dev luarocks
       - name: Install Lua Dependencies
         id: install-lua-dependencies
-        if: matrix.python-versions == '3.12'
         run: poetry run -- nox -s lua:install-dependencies
       - name: Lint Code
         id: lint-code
@@ -96,7 +94,6 @@ jobs:
 
       - name: Lint Lua
         id: lint-lua
-        if: matrix.python-versions == '3.12'
         run: poetry run -- nox -s lua:lint
       - name: Upload Artifacts
         id: upload-artifacts
