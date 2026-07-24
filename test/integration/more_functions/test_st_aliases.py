@@ -70,6 +70,10 @@ class TestStAliases(ScalarFunctionTestBase):
             f"select {name}({arguments}) = {target}({arguments})",
             True,
         )
+        self.assert_query(
+            f"select typeof({name}({arguments})) = typeof({target}({arguments}))",
+            True,
+        )
         alias_metadata = self.connection.execute(
             f"select {name}({arguments}) from dual"
         ).columns()
