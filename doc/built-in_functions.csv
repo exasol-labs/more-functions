@@ -1,0 +1,238 @@
+function_name,return_type,parameter_types
+APPROXIMATE_COUNT_DISTINCT,"DECIMAL(18,0)","any except GEOMETRY"
+EVERY,BOOLEAN,BOOLEAN
+SOME,BOOLEAN,BOOLEAN
+MIN,"same as argument",any
+MAX,"same as argument",any
+SUM,"numeric result type",numeric
+AVG,"numeric result type",numeric
+COUNT,"DECIMAL(18,0)",any
+COUNT,"DECIMAL(18,0)","DISTINCT any except GEOMETRY"
+COUNT,"DECIMAL(18,0)","*"
+GROUP_CONCAT,"VARCHAR(max), preserving UTF-8 when any string argument is UTF-8","expression, separator, [truncation filler]"
+MUL,"DOUBLE",numeric
+ADD,"derived numeric/date-time type","numeric or date-time, numeric or date-time"
+SUB,"derived numeric/date-time type","numeric or date-time, numeric or date-time"
+DIV,"derived numeric type",numeric; numeric
+MOD,"derived numeric type",numeric; numeric
+IDIV,"derived numeric type",numeric; numeric
+UNARY_MINUS,"derived numeric type",numeric
+ROUND,"derived numeric type",numeric
+ROUND,"derived numeric type",numeric; numeric
+TRUNC,"derived numeric type",numeric
+TRUNC,"derived numeric/date-time type","numeric or date-time; numeric"
+ABS,"derived numeric type",numeric
+SIGN,"SMALLINT",numeric
+CEIL,"derived numeric type",numeric
+FLOOR,"derived numeric type",numeric
+MIN_SCALE,"SMALLINT",exact numeric
+WIDTH_BUCKET,"derived DECIMAL","numeric; numeric; numeric; exact numeric"
+POWER,DOUBLE,"numeric; numeric"
+SQRT,DOUBLE,numeric
+LOG,DOUBLE,"numeric; numeric"
+ARCTAN2,DOUBLE,"numeric; numeric"
+PI,DOUBLE,""
+RANDOM,DOUBLE,"[numeric lower bound; numeric upper bound]"
+ZEROIFNULL,"derived numeric/boolean type",numeric or boolean
+NULLIFZERO,"same as argument",numeric
+LEAST,"common numeric/string/date-time type","one or more compatible arguments"
+GREATEST,"common numeric/string/date-time type","one or more compatible arguments"
+BIT_AND,"bit-function numeric type","bit-function numeric; bit-function numeric"
+BIT_OR,"bit-function numeric type","bit-function numeric; bit-function numeric"
+BIT_XOR,"bit-function numeric type","bit-function numeric; bit-function numeric"
+BIT_NOT,"bit-function numeric type",bit-function numeric
+BIT_LSHIFT,"bit-function numeric type","bit-function numeric; shift numeric"
+BIT_RSHIFT,"bit-function numeric type","bit-function numeric; shift numeric"
+BIT_LROTATE,"bit-function numeric type","bit-function numeric; shift numeric"
+BIT_RROTATE,"bit-function numeric type","bit-function numeric; shift numeric"
+BIT_SET,"bit-function numeric type","bit-function numeric; shift numeric"
+BIT_CHECK,BOOLEAN,"bit-function numeric; shift numeric"
+BIT_TO_NUM,"DECIMAL(20,0)","one or more castable numeric arguments"
+HASH_SHA512,"CHAR(128) or HASHTYPE(64)",any
+HASH_SHA256,"CHAR(64) or HASHTYPE(32)",any
+HASH_SHA1,"CHAR(40) or HASHTYPE(20)",any
+HASH_TIGER,"CHAR(48) or HASHTYPE(24)",any
+HASH_MD5,"CHAR(32) or HASHTYPE(16)",any
+CRYPTO_HASH,"CHAR(CRYPTOHASHSIZE)",any
+YEAR,"derived exact numeric",timestamp
+MONTH,"derived exact numeric",timestamp
+DAY,"derived exact numeric",timestamp
+HOUR,"derived exact numeric",timestamp
+MINUTE,"derived exact numeric",timestamp
+SECOND,"derived exact numeric",timestamp
+SECOND,"derived exact numeric","timestamp; exact numeric precision"
+WEEK,"derived week numeric type",DATE
+EXTRACT,"derived exact numeric","datetime or interval"
+DATE_TRUNC,"same DATE/TIMESTAMP type as second argument","character field; DATE or TIMESTAMP"
+ADD_SECONDS,"TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; seconds numeric"
+ADD_MINUTES,"DATE/TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; numeric"
+ADD_HOURS,"DATE/TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; numeric"
+ADD_DAYS,"DATE/TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; SMALLINT"
+ADD_WEEKS,"DATE/TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; SMALLINT"
+ADD_MONTHS,"DATE/TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; SMALLINT"
+ADD_YEARS,"DATE/TIMESTAMP or TIMESTAMP WITH LOCAL TIME ZONE","date-time; SMALLINT"
+FROM_POSIXTIME,TIMESTAMP,"exact numeric seconds"
+POSIX_TIME,"DECIMAL seconds",""
+POSIX_TIME,"DECIMAL seconds",TIMESTAMP WITH LOCAL TIME ZONE
+CONVERT_TZ,TIMESTAMP,"timestamp; character time zone; character time zone"
+CONVERT_TZ,TIMESTAMP,"timestamp; character time zone; character time zone; character time zone"
+SECONDS_BETWEEN,"DECIMAL seconds","timestamp; timestamp"
+MINUTES_BETWEEN,"derived numeric","timestamp; timestamp"
+HOURS_BETWEEN,"derived numeric","timestamp; timestamp"
+DAYS_BETWEEN,SMALLINT,"DATE; DATE"
+MONTHS_BETWEEN,DOUBLE,"DATE; DATE"
+YEARS_BETWEEN,DOUBLE,"DATE; DATE"
+DAYOFWEEK,"SMALLINT(1,0)",timestamp
+LAST_DAY,DATE,timestamp
+TO_DATE,DATE,castable value
+TO_DATE,DATE,"value; format"
+TO_NUMBER,"derived numeric type",castable value
+TO_NUMBER,"derived numeric type","value; constant character format"
+TO_TIMESTAMP,TIMESTAMP,castable value
+TO_TIMESTAMP,TIMESTAMP,"value; format"
+TO_YMINTERVAL,"INTERVAL YEAR TO MONTH",castable value
+TO_DSINTERVAL,"INTERVAL DAY TO SECOND",castable value
+NUMTODSINTERVAL,"INTERVAL DAY TO SECOND","numeric; character unit"
+NUMTOYMINTERVAL,"INTERVAL YEAR TO MONTH","numeric; character unit"
+TO_CHAR,"string representation type",any
+TO_CHAR,"derived VARCHAR","value; format"
+TO_CHAR,"derived VARCHAR","value; format; nls parameter"
+SUBSTR,"derived VARCHAR","string-convertible value; SMALLINT position"
+SUBSTR,"derived VARCHAR","string-convertible value; SMALLINT position; SMALLINT length"
+CONCAT,"derived VARCHAR","string-convertible value; string-convertible value"
+CONCAT,"derived VARCHAR","one or more string-convertible values"
+LENGTH,"INTEGER",string
+CHAR_LENGTH,"INTEGER",string
+OCTET_LENGTH,"INTEGER",string
+ASCII,"derived numeric",STRING or GEOMETRY
+UNICODE,"derived numeric",STRING or GEOMETRY
+CHR,"derived VARCHAR",numeric
+UNICODECHR,"derived VARCHAR",numeric
+COLOGNE_PHONETIC,"derived VARCHAR",string-convertible value
+LOWER,"derived VARCHAR",string-convertible value
+UPPER,"derived VARCHAR",string-convertible value
+LTRIM,"derived VARCHAR",string-convertible value
+LTRIM,"derived VARCHAR","string-convertible value; trim characters"
+RTRIM,"derived VARCHAR",string-convertible value
+RTRIM,"derived VARCHAR","string-convertible value; trim characters"
+TRIM,"derived VARCHAR",string-convertible value
+TRIM,"derived VARCHAR","string-convertible value; trim characters"
+LPAD,"derived VARCHAR","string-convertible value; SMALLINT length"
+LPAD,"derived VARCHAR","string-convertible value; SMALLINT length; string-convertible pad"
+RPAD,"derived VARCHAR","string-convertible value; SMALLINT length"
+RPAD,"derived VARCHAR","string-convertible value; SMALLINT length; string-convertible pad"
+RIGHT,"derived VARCHAR","string-convertible value; SMALLINT length"
+REPLACE,"derived VARCHAR","string-convertible value; search string; replacement string"
+REPEAT,"derived VARCHAR","string-convertible value; SMALLINT count"
+REVERSE,"same string type",string-convertible value
+SOUNDEX,"CHAR(4)",string
+SPACE,"derived VARCHAR",SMALLINT
+INITCAP,"string type",string-convertible value
+TRANSLATE,"derived VARCHAR","string-convertible value; from string; to string"
+INSERT,"derived VARCHAR","string; numeric position; numeric length; string"
+REGEXP_COUNT,SMALLINT,"string; pattern; [SMALLINT position; match parameter]"
+REGEXP_SUBSTR,"derived VARCHAR","string; pattern; [position; occurrence; match parameter]"
+REGEXP_LIKE,BOOLEAN,"string; pattern; [match parameter]"
+REGEXP_REPLACE,"derived VARCHAR","string; pattern; [replacement; SMALLINT position; SMALLINT occurrence; match parameter]"
+REGEXP_INSTR,SMALLINT,"string; pattern; [SMALLINT position; SMALLINT occurrence; SMALLINT return option; match parameter]"
+INSTR,SMALLINT,"string; string; [position; occurrence]"
+EDIT_DISTANCE,SMALLINT,"string; string"
+LIKE,BOOLEAN,"string; pattern"
+LIKE,BOOLEAN,"string; pattern; escape character"
+RANK,INTEGER,""
+DENSE_RANK,INTEGER,""
+PERCENT_RANK,DOUBLE,""
+CUME_DIST,DOUBLE,""
+ROW_NUMBER,INTEGER,""
+NTILE,INTEGER,numeric
+FIRST_VALUE,"same as argument",any
+LAST_VALUE,"same as argument",any
+NTH_VALUE,"same as first argument","any; numeric"
+ROW_SELECT,"common type of value and default","any; default value"
+EXISTS,BOOLEAN,subquery
+IS_NULL,BOOLEAN,any
+IS_NOT_NULL,BOOLEAN,any
+IS_TRUE,BOOLEAN,BOOLEAN
+IS_FALSE,BOOLEAN,BOOLEAN
+IS_NOT_TRUE,BOOLEAN,BOOLEAN
+IS_NOT_FALSE,BOOLEAN,BOOLEAN
+NOT,BOOLEAN,BOOLEAN
+AND,BOOLEAN,"one or more BOOLEAN arguments"
+OR,BOOLEAN,"one or more BOOLEAN arguments"
+BETWEEN,BOOLEAN,"any; lower bound; upper bound"
+EQUAL,BOOLEAN,"any; compatible value"
+NOT_EQUAL,BOOLEAN,"any; compatible value"
+LESS,BOOLEAN,"any; compatible value"
+LESS_EQUAL,BOOLEAN,"any; compatible value"
+IS_NUMBER,BOOLEAN,any
+IS_BOOLEAN,BOOLEAN,any
+IS_DATE,BOOLEAN,any
+IS_TIMESTAMP,BOOLEAN,any
+IS_DSINTERVAL,BOOLEAN,any
+IS_YMINTERVAL,BOOLEAN,any
+CASE,"common type of result expressions","conditions/results; [default]"
+DECODE,"common type of result expressions","expression; search/result pairs; [default]"
+NVL,"common type of arguments","value; replacement value"
+NULLIF,"common type of arguments","value; comparison value"
+COALESCE,"common type of arguments","one or more arguments"
+CURRENT_TIMESTAMP,"configured timestamp type",""
+CURRENT_DATE,"configured date type",""
+SYSDATE,DATE,""
+SESSION_TIME_ZONE,VARCHAR,""
+DBTIMEZONE,VARCHAR,""
+CURRENT_SCHEMA,"configured VARCHAR type",""
+CURRENT_USER,"configured VARCHAR type",""
+CURRENT_SCHEMA_ID,INTEGER,""
+CURRENT_STATEMENT_ID,"DECIMAL(20,0)",""
+CURRENT_SESSION,"DECIMAL(20,0)",""
+IPROC,"SMALLINT(4,0)",""
+NPROC,"SMALLINT(4,0)",""
+SLEEP,DOUBLE,numeric
+MALLOC,DOUBLE,numeric
+VALUE2PROC,SMALLINT,""
+DUMP,"derived VARCHAR",any
+TYPEOF,"UTF-8 VARCHAR",any
+ST_ISEMPTY,BOOLEAN,GEOMETRY
+ST_ISSIMPLE,BOOLEAN,GEOMETRY
+ST_DIMENSION,SMALLINT,GEOMETRY
+ST_GEOMETRYTYPE,VARCHAR,GEOMETRY
+ST_BOUNDARY,GEOMETRY,GEOMETRY
+ST_ENVELOPE,GEOMETRY,GEOMETRY
+ST_CONVEXHULL,GEOMETRY,GEOMETRY
+ST_INTERSECTION,GEOMETRY,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_DIFFERENCE,GEOMETRY,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_SYMDIFFERENCE,GEOMETRY,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_UNION,GEOMETRY,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_EQUALS,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_DISJOINT,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_INTERSECTS,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_TOUCHES,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_CROSSES,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_WITHIN,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_CONTAINS,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_OVERLAPS,BOOLEAN,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_X,DOUBLE,GEOMETRY
+ST_Y,DOUBLE,GEOMETRY
+ST_LENGTH,DOUBLE,GEOMETRY
+ST_ISRING,BOOLEAN,GEOMETRY
+ST_STARTPOINT,GEOMETRY,GEOMETRY
+ST_ENDPOINT,GEOMETRY,GEOMETRY
+ST_CENTROID,GEOMETRY,GEOMETRY
+ST_AREA,DOUBLE,GEOMETRY
+ST_EXTERIORRING,GEOMETRY,GEOMETRY
+ST_NUMPOINTS,INTEGER,GEOMETRY
+ST_NUMGEOMETRIES,INTEGER,GEOMETRY
+ST_ISCLOSED,BOOLEAN,GEOMETRY
+ST_NUMINTERIORRINGS,INTEGER,GEOMETRY
+ST_FORCE2D,GEOMETRY,VARCHAR
+ST_TRANSFORM,GEOMETRY,"GEOMETRY; constant exact-numeric SRID"
+ST_SETSRID,GEOMETRY,"GEOMETRY; constant exact-numeric SRID"
+ST_INTERIORRINGN,GEOMETRY,"GEOMETRY; INTEGER"
+ST_GEOMETRYN,GEOMETRY,"GEOMETRY; INTEGER"
+ST_POINTN,GEOMETRY,"GEOMETRY; INTEGER"
+ST_BUFFER,GEOMETRY,"GEOMETRY; DOUBLE"
+ST_DISTANCE,DOUBLE,"GEOMETRY or castable string; GEOMETRY or castable string"
+ST_UNION,GEOMETRY,GEOMETRY
+ST_INTERSECTION,GEOMETRY,GEOMETRY
+PERCENTILE_DISC,"same as value argument",numeric/date-time/interval
+PERCENTILE_CONT,"DOUBLE, same timestamp type, or max interval type",numeric/date-time/interval
