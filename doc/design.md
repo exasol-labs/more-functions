@@ -73,6 +73,7 @@ Needs: impl
 
 Covers:
 - `req~st-alias-functions~1`
+- `scn~st-alias-functions~1`
 
 ### Lua Scalar Functions
 
@@ -111,14 +112,6 @@ At runtime the caller executes the scalar function inside Exasol.
 The function evaluates the input, distinguishes null from non-null values, performs SQL-literal escaping for single quotes, and returns the resulting string.
 
 The scenario requirements are forwarded to verification without repeating them here:
-
-### AREA (Alias of ST_AREA)
-
-dsn --> impl, itest : req~area-function~1 
-
-### ST_* Aliases
-
-dsn --> impl, itest : scn~st-alias-functions~1
 
 ### QUOTE
 

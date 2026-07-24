@@ -10,6 +10,7 @@ class TestStAliases(ScalarFunctionTestBase):
     @pytest.mark.parametrize(
         "name, target, arguments",
         [
+            ("area", "st_area", "'POLYGON((0 0,0 1,1 1,1 0,0 0))'"),
             ("astext", "st_astext", "'POINT(1 2)'"),
             ("aswkt", "st_aswkt", "'POINT(1 2)'"),
             ("boundary", "st_boundary", "'POLYGON((0 0,0 1,1 1,1 0,0 0))'"),
