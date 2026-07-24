@@ -7,7 +7,6 @@ workflows:
         content:
           - name: Install Lua and LuaRocks
             id: install-lua-and-luarocks
-            if: matrix.python-versions == '3.12'
             run: |
               sudo apt-get update
               sudo apt-get install --no-install-recommends --yes lua5.4 liblua5.4-dev luarocks
@@ -17,7 +16,6 @@ workflows:
         content:
           - name: Lint Lua
             id: lint-lua
-            if: matrix.python-versions == '3.12'
             run: poetry run -- nox -s lua:lint
       - action: INSERT_AFTER
         job: lint-code
@@ -25,5 +23,4 @@ workflows:
         content:
           - name: Install Lua Dependencies
             id: install-lua-dependencies
-            if: matrix.python-versions == '3.12'
             run: poetry run -- nox -s lua:install-dependencies
