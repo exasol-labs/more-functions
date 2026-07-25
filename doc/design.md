@@ -64,6 +64,17 @@ Needs: impl
 Covers:
 - `req~quote-function~1`
 
+#### ST_* Alias Function Design
+`dsn~st-alias-functions~1`
+
+Each MariaDB-compatible unprefixed geospatial alias is implemented as an individual Exasol SQL scalar function under `exasol/more_functions/sql/scalar/`. The wrapper declares the same parameter types and return type as its corresponding Exasol `ST_*` function and delegates directly to that function without changing the value.
+
+Needs: impl
+
+Covers:
+- `req~st-alias-functions~1`
+- `scn~st-alias-functions~1`
+
 ### Lua Scalar Functions
 
 Lua scalar functions are implemented as standalone Exasol Lua scalar script definitions under `exasol/more_functions/lua/scalar/`.
@@ -101,10 +112,6 @@ At runtime the caller executes the scalar function inside Exasol.
 The function evaluates the input, distinguishes null from non-null values, performs SQL-literal escaping for single quotes, and returns the resulting string.
 
 The scenario requirements are forwarded to verification without repeating them here:
-
-### AREA (Alias of ST_AREA)
-
-dsn --> impl, itest : req~area-function~1 
 
 ### QUOTE
 
