@@ -106,6 +106,16 @@ Needs: impl
 Covers:
 - `req~bit-count-function~2`
 
+#### Metadata-Backed Compatibility Function Design
+`dsn~metadata-backed-lua-functions~1`
+
+Each metadata-backed compatibility function is implemented as a standalone, no-argument Exasol Lua scalar script under `exasol/more_functions/lua/scalar/`.
+
+Needs: impl
+
+Covers:
+- `req~metadata-backed-lua-functions~1`
+
 ## Runtime View
 
 At runtime the caller executes the scalar function inside Exasol.
@@ -126,6 +136,19 @@ dsn --> impl, itest : scn~bit-count-integer-literal~1
 dsn --> impl, itest : scn~bit-count-exact-numeric-integer~1
 dsn --> impl, itest : scn~bit-count-floating-point-integer~1
 dsn --> impl, itest : scn~bit-count-ignore-higher-bits~1
+
+### Metadata-Backed Compatibility Functions
+
+dsn --> impl, itest : scn~metadata-backed-lua-functions-current-schema~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-database~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-schema~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-connection-id~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-version~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-version-major~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-version-minor~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-version-patch~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-session-user~1
+dsn --> impl, itest : scn~metadata-backed-lua-functions-system-user~1
 
 ## Deployment View
 
@@ -173,8 +196,6 @@ BENCHMARK(n, <expression>)
 ```
 
 The second parameter of benchmark works like a function pointer, since benchmark runs the given function _n_ times to allow timing it. Such a function pointer is not possible with add-on-functions. 
-
-
 
 ## Glossary
 
