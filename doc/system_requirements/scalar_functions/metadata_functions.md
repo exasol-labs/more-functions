@@ -14,9 +14,6 @@ database:
 | `SCHEMA()`            | Name of the current database      |
 | `CONNECTION_ID()`     | Identifier of the current session |
 | `VERSION()`           | Database version                  |
-| `SYS.VERSION_MAJOR()` | Major database-version component  |
-| `SYS.VERSION_MINOR()` | Minor database-version component  |
-| `SYS.VERSION_PATCH()` | Patch database-version component  |
 | `SESSION_USER()`      | Current user                      |
 | `SYSTEM_USER()`       | Current user                      |
 

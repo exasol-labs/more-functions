@@ -26,3 +26,5 @@ Functions
    :maxdepth: 1
 
    functions/bit_count
+   functions/metadata_functions
+   functions/sys_functions

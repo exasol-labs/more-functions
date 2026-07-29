@@ -36,11 +36,11 @@ Sources:
 | `ANY`                                  | set      | aggregate          |         | ✓                                 |
 | `APPROXIMATE_COUNT_DISTINCT`           | set      | aggregate          |         | ✓                                 |
 | `AREA`                                 | scalar   | geo                | ✓      | + → ST_AREA                        |
-| `AsBinary`                             | scalar   | geo                | ✓      | ✕¹                                |
+| `AsBinary`                             | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ASCII`                                | scalar   | string             | ✓      | ✓                                 |
 | `ASIN`                                 | scalar   | math               | ✓      | ✓                                 |
 | `AsText`                               | scalar   | geo                | ✓      | + → ST_AsText                      |
-| `AsWKB`                                | scalar   | geo                | ✓      | ✕¹                                |
+| `AsWKB`                                | scalar   | geo                | ✓      | ✕[^1]                             |
 | `AsWKT`                                | scalar   | geo                | ✓      | + → ST_ASWKT                       |
 | `ATAN`                                 | scalar   | math               | ✓      | ✓                                 |
 | `ATAN2`                                | scalar   | math               | ✓      | ✓                                 |
@@ -87,7 +87,7 @@ Sources:
 | `COMPRESS`                             | scalar   | crypto/compression | ✓      |                                    |
 | `CONCAT`                               | scalar   | string             | ✓      | ✓                                 |
 | `CONCAT_WS`                            | scalar   | string             | ✓      |                                    |
-| `CONNECTION_ID`                        | scalar   | information        | ✓      |                                    |
+| `CONNECTION_ID`                        | scalar   | information        | ✓      | +                                  |
 | `CONNECT_BY_ISCYCLE`                   | scalar   | hierarchy          |         | ✓                                 |
 | `CONNECT_BY_ISLEAF`                    | scalar   | hierarchy          |         | ✓                                 |
 | `CONTAINS`                             | scalar   | geo                | ✓      | + → ST_CONTAINS                    |
@@ -117,7 +117,7 @@ Sources:
 | `CURRENT_TIMESTAMP`                    | scalar   | date/time          | ✓      | ✓                                 |
 | `CURRENT_USER`                         | scalar   | information        | ✓      | ✓                                 |
 | `CURTIME`                              | scalar   | date/time          | ✓      |                                    |
-| `DATABASE`                             | scalar   | information        | ✓      |                                    |
+| `DATABASE`                             | scalar   | information        | ✓      | +                                  |
 | `DATE_TRUNC`                           | scalar   | date/time          |         | ✓                                 |
 | `DATEDIFF`                             | scalar   | date/time          | ✓      |                                    |
 | `DATE_ADD`                             | scalar   | date/time          | ✓      |                                    |
@@ -167,14 +167,14 @@ Sources:
 | `FROM_POSIX_TIME`                      | scalar   | date/time          |         | ✓                                 |
 | `FROM_UNIXTIME`                        | scalar   | date/time          | ✓      |                                    |
 | `GeomCollFromText`                     | scalar   | geo                | ✓      | ✓ → ST_GeomCollFromText           |
-| `GeomCollFromWKB`                      | scalar   | geo                | ✓      | ✕¹                                |
+| `GeomCollFromWKB`                      | scalar   | geo                | ✓      | ✕[^1]                             |
 | `GEOMETRYCOLLECTION`                   | scalar   | geo                | ✓      |                                    |
 | `GeometryCollectionFromText`           | scalar   | geo                | ✓      | ✓ → ST_GeometryCollectionFromText |
-| `GeometryCollectionFromWKB`            | scalar   | geo                | ✓      | ✕¹                                |
+| `GeometryCollectionFromWKB`            | scalar   | geo                | ✓      | ✕[^1]                             |
 | `GeometryFromText`                     | scalar   | geo                | ✓      | ✓ → ST_GeometryFromText           |
-| `GeometryFromWKB`                      | scalar   | geo                | ✓      | ✕¹                                |
+| `GeometryFromWKB`                      | scalar   | geo                | ✓      | ✕[^1]                             |
 | `GeomFromText`                         | scalar   | geo                | ✓      | ✓ → ST_GeomFromText               |
-| `GeomFromWKB`                          | scalar   | geo                | ✓      | ✕¹                                |
+| `GeomFromWKB`                          | scalar   | geo                | ✓      | ✕[^1]                             |
 | `GeometryN`                            | scalar   | geo                | ✓      | ✓ → ST_GEOMETRYN                  |
 | `GeometryType`                         | scalar   | geo                | ✓      | ✓ → ST_GEOMETRYTYPE               |
 | `GET_FORMAT`                           | scalar   | date/time          | ✓      |                                    |
@@ -263,10 +263,10 @@ Sources:
 | `LEVEL`                                | scalar   | hierarchy          |         | ✓                                 |
 | `LIKE`                                 | scalar   | string             | ✓      |                                    |
 | `LineFromText`                         | scalar   | geo                | ✓      | ✓ → ST_LineFromText               |
-| `LineFromWKB`                          | scalar   | geo                | ✓      | ✕¹                                |
+| `LineFromWKB`                          | scalar   | geo                | ✓      | ✕[^1]                             |
 | `LINESTRING`                           | scalar   | geo                | ✓      |                                    |
 | `LineStringFromText`                   | scalar   | geo                | ✓      | ✓ → ST_LineStringFromText         |
-| `LineStringFromWKB`                    | scalar   | geo                | ✓      | ✕¹                                |
+| `LineStringFromWKB`                    | scalar   | geo                | ✓      | ✕[^1]                             |
 | `LN`                                   | scalar   | math               | ✓      | ✓                                 |
 | `LOAD_FILE`                            | scalar   | string             | ✓      |                                    |
 | `LOCALTIME`                            | scalar   | date/time          | ✓      |                                    |
@@ -303,25 +303,25 @@ Sources:
 | `MINUTE`                               | scalar   | date/time          | ✓      | ✓                                 |
 | `MINUTES_BETWEEN`                      | scalar   | date/time          |         | ✓                                 |
 | `MLineFromText`                        | scalar   | geo                | ✓      | ✓ → ST_MLineFromText              |
-| `MLineFromWKB`                         | scalar   | geo                | ✓      | ✕¹                                |
+| `MLineFromWKB`                         | scalar   | geo                | ✓      | ✕[^1]                             |
 | `MOD`                                  | scalar   | math               | ✓      | ✓                                 |
 | `MONTH`                                | scalar   | date/time          | ✓      | ✓                                 |
 | `MONTHNAME`                            | scalar   | date/time          | ✓      |                                    |
 | `MONTHS_BETWEEN`                       | scalar   | date/time          |         | ✓                                 |
 | `MPointFromText`                       | scalar   | geo                | ✓      | ✓ → ST_MPointFromText             |
-| `MPointFromWKB`                        | scalar   | geo                | ✓      | ✕¹                                |
+| `MPointFromWKB`                        | scalar   | geo                | ✓      | ✕[^1]                             |
 | `MPolyFromText`                        | scalar   | geo                | ✓      | ✓ → ST_MPolyFromText              |
-| `MPolyFromWKB`                         | scalar   | geo                | ✓      | ✕¹                                |
+| `MPolyFromWKB`                         | scalar   | geo                | ✓      | ✕[^1]                             |
 | `MUL`                                  | scalar   | math               |         | ✓                                 |
 | `MULTILINESTRING`                      | scalar   | geo                | ✓      |                                    |
 | `MultiLineStringFromText`              | scalar   | geo                | ✓      | ✓ → ST_MultiLineStringFromText    |
-| `MultiLineStringFromWKB`               | scalar   | geo                | ✓      | ✕¹                                |
+| `MultiLineStringFromWKB`               | scalar   | geo                | ✓      | ✕[^1]                             |
 | `MULTIPOINT`                           | scalar   | geo                | ✓      |                                    |
 | `MultiPointFromText`                   | scalar   | geo                | ✓      | ✓ → ST_MultiPointFromText         |
-| `MultiPointFromWKB`                    | scalar   | geo                | ✓      | ✕¹                                |
+| `MultiPointFromWKB`                    | scalar   | geo                | ✓      | ✕[^1]                             |
 | `MULTIPOLYGON`                         | scalar   | geo                | ✓      |                                    |
 | `MultiPolygonFromText`                 | scalar   | geo                | ✓      | ✓ → ST_MultiPolygonFromText       |
-| `MultiPolygonFromWKB`                  | scalar   | geo                | ✓      | ✕¹                                |
+| `MultiPolygonFromWKB`                  | scalar   | geo                | ✓      | ✕[^1]                             |
 | `NAME_CONST`                           | scalar   | misc               | ✓      |                                    |
 | `NATURAL_SORT_KEY`                     | scalar   | string             | ✓      |                                    |
 | `NULLIF`                               | scalar   | control flow       | ✓      | ✓                                 |
@@ -353,14 +353,14 @@ Sources:
 | `PI`                                   | scalar   | math               | ✓      | ✓                                 |
 | `POINT`                                | scalar   | geo                | ✓      |                                    |
 | `PointFromText`                        | scalar   | geo                | ✓      | ✓ → ST_PointFromText              |
-| `PointFromWKB`                         | scalar   | geo                | ✓      | ✕¹                                |
+| `PointFromWKB`                         | scalar   | geo                | ✓      | ✕[^1]                             |
 | `PointN`                               | scalar   | geo                | ✓      | ✓ → ST_POINTN                     |
 | `PointOnSurface`                       | scalar   | geo                | ✓      | ✓ → ST_POINTONSURFACE             |
 | `POLYGON`                              | scalar   | geo                | ✓      |                                    |
 | `PolyFromText`                         | scalar   | geo                | ✓      | ✓ → ST_PolyFromText               |
-| `PolyFromWKB`                          | scalar   | geo                | ✓      | ✕¹                                |
+| `PolyFromWKB`                          | scalar   | geo                | ✓      | ✕[^1]                             |
 | `PolygonFromText`                      | scalar   | geo                | ✓      | ✓ → ST_PolygonFromText            |
-| `PolygonFromWKB`                       | scalar   | geo                | ✓      | ✕¹                                |
+| `PolygonFromWKB`                       | scalar   | geo                | ✓      | ✕[^1]                             |
 | `POSITION`                             | scalar   | string             | ✓      | ✓                                 |
 | `POW`                                  | scalar   | math               | ✓      |                                    |
 | `POWER`                                | scalar   | math               | ✓      | ✓                                 |
@@ -387,7 +387,7 @@ Sources:
 | `ROWNUM`                               | scalar   | information        |         | ✓                                 |
 | `ROW_NUMBER`                           | analytic | window             | ✓      | ✓                                 |
 | `RTRIM`                                | scalar   | string             | ✓      | ✓                                 |
-| `SCHEMA`                               | scalar   | information        | ✓      |                                    |
+| `SCHEMA`                               | scalar   | information        | ✓      | +                                  |
 | `SCOPE_USER`                           | scalar   | information        |         | ✓                                 |
 | `SECOND`                               | scalar   | date/time          | ✓      | ✓                                 |
 | `SECONDS_BETWEEN`                      | scalar   | date/time          |         | ✓                                 |
@@ -395,7 +395,7 @@ Sources:
 | `SETVAL`                               | scalar   | sequence           | ✓      |                                    |
 | `SESSION_PARAMETER`                    | scalar   | information        |         | ✓                                 |
 | `SESSIONTIMEZONE`                      | scalar   | date/time          |         | ✓                                 |
-| `SESSION_USER`                         | scalar   | information        | ✓      |                                    |
+| `SESSION_USER`                         | scalar   | information        | ✓      | +                                  |
 | `sha`                                  | scalar   | crypto/compression | ✓      |                                    |
 | `SHA1`                                 | scalar   | crypto/compression | ✓      |                                    |
 | `SHA2`                                 | scalar   | crypto/compression | ✓      |                                    |
@@ -413,10 +413,10 @@ Sources:
 | `SOME`                                 | set      | aggregate          |         | ✓                                 |
 | `SRID`                                 | scalar   | geo                | ✓      | ✓ → ST_SRID                       |
 | `ST_AREA`                              | scalar   | geo                | ✓      | ✓                                 |
-| `ST_AsBinary`                          | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_AsBinary`                          | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_AsGeoJson`                         | scalar   | geo                | ✓      | ✓                                 |
 | `ST_AsText`                            | scalar   | geo                | ✓      | ✓                                 |
-| `ST_AsWKB`                             | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_AsWKB`                             | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_ASWKT`                             | scalar   | geo                | ✓      | ✓                                 |
 | `ST_BOUNDARY`                          | scalar   | geo                | ✓      | ✓                                 |
 | `ST_BUFFER`                            | scalar   | geo                | ✓      | ✓                                 |
@@ -436,16 +436,16 @@ Sources:
 | `ST_ExteriorRing`                      | scalar   | geo                | ✓      | ✓                                 |
 | `ST_GeoHash`                           | scalar   | geo                | ✓      | ✓                                 |
 | `ST_GeomCollFromText`                  | scalar   | geo                | ✓      | ✓                                 |
-| `ST_GeomCollFromWKB`                   | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_GeomCollFromWKB`                   | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_GeometryCollectionFromText`        | scalar   | geo                | ✓      | ✓                                 |
-| `ST_GeometryCollectionFromWKB`         | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_GeometryCollectionFromWKB`         | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_GeometryFromText`                  | scalar   | geo                | ✓      | ✓                                 |
-| `ST_GeometryFromWKB`                   | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_GeometryFromWKB`                   | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_GEOMETRYN`                         | scalar   | geo                | ✓      | ✓                                 |
 | `ST_GEOMETRYTYPE`                      | scalar   | geo                | ✓      | ✓                                 |
 | `ST_GeomFromGeoJSON`                   | scalar   | geo                | ✓      | ✓                                 |
 | `ST_GeomFromText`                      | scalar   | geo                | ✓      | ✓                                 |
-| `ST_GeomFromWKB`                       | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_GeomFromWKB`                       | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_InteriorRingN`                     | scalar   | geo                | ✓      | ✓                                 |
 | `ST_INTERSECTION`                      | scalar   | geo                | ✓      | ✓                                 |
 | `ST_INTERSECTS`                        | scalar   | geo                | ✓      | ✓                                 |
@@ -458,34 +458,34 @@ Sources:
 | `ST_LongFromGeoHash`                   | scalar   | geo                | ✓      | ✓                                 |
 | `ST_LENGTH`                            | scalar   | geo                | ✓      | ✓                                 |
 | `ST_LineFromText`                      | scalar   | geo                | ✓      | ✓                                 |
-| `ST_LineFromWKB`                       | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_LineFromWKB`                       | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_LineStringFromText`                | scalar   | geo                | ✓      | ✓                                 |
-| `ST_LineStringFromWKB`                 | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_LineStringFromWKB`                 | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_MLineFromText`                     | scalar   | geo                | ✓      | ✓                                 |
-| `ST_MLineFromWKB`                      | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_MLineFromWKB`                      | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_MPointFromText`                    | scalar   | geo                | ✓      | ✓                                 |
-| `ST_MPointFromWKB`                     | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_MPointFromWKB`                     | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_MPolyFromText`                     | scalar   | geo                | ✓      | ✓                                 |
-| `ST_MPolyFromWKB`                      | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_MPolyFromWKB`                      | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_MultiLineStringFromText`           | scalar   | geo                | ✓      | ✓                                 |
-| `ST_MultiLineStringFromWKB`            | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_MultiLineStringFromWKB`            | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_MultiPointFromText`                | scalar   | geo                | ✓      | ✓                                 |
 | `ST_MultiPolygonFromText`              | scalar   | geo                | ✓      | ✓                                 |
-| `ST_MultiPolygonFromWKB`               | scalar   | geo                | ✓      | ✕¹                                |
-| `ST_MultiPointFromWKB`                 | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_MultiPolygonFromWKB`               | scalar   | geo                | ✓      | ✕[^1]                             |
+| `ST_MultiPointFromWKB`                 | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_NUMGEOMETRIES`                     | scalar   | geo                | ✓      | ✓                                 |
 | `ST_NumInteriorRings`                  | scalar   | geo                | ✓      | ✓                                 |
 | `ST_NUMPOINTS`                         | scalar   | geo                | ✓      | ✓                                 |
 | `ST_OVERLAPS`                          | scalar   | geo                | ✓      | ✓                                 |
 | `ST_PointFromGeoHash`                  | scalar   | geo                | ✓      | ✓                                 |
 | `ST_PointFromText`                     | scalar   | geo                | ✓      | ✓                                 |
-| `ST_PointFromWKB`                      | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_PointFromWKB`                      | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_POINTN`                            | scalar   | geo                | ✓      | ✓                                 |
 | `ST_POINTONSURFACE`                    | scalar   | geo                | ✓      | ✓                                 |
 | `ST_PolyFromText`                      | scalar   | geo                | ✓      | ✓                                 |
-| `ST_PolyFromWKB`                       | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_PolyFromWKB`                       | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_PolygonFromText`                   | scalar   | geo                | ✓      | ✓                                 |
-| `ST_PolygonFromWKB`                    | scalar   | geo                | ✓      | ✕¹                                |
+| `ST_PolygonFromWKB`                    | scalar   | geo                | ✓      | ✕[^1]                             |
 | `ST_RELATE`                            | scalar   | geo                | ✓      | ✓                                 |
 | `ST_Simplify`                          | scalar   | geo                | ✓      | ✓                                 |
 | `ST_SRID`                              | scalar   | geo                | ✓      | ✓                                 |
@@ -496,8 +496,8 @@ Sources:
 | `ST_Validate`                          | scalar   | geo                | ✓      | ✓                                 |
 | `ST_WITHIN`                            | scalar   | geo                | ✓      | ✓                                 |
 | `ST_X`                                 | scalar   | geo                | ✓      | ✓                                 |
-| `ST_Y`                                 | scalar   | geo                | ✓       | ✓                                 |
-| `STARTPOINT`                           | scalar   | geo                | ✓       | + → ST_STARTPOINT                 |
+| `ST_Y`                                 | scalar   | geo                | ✓      | ✓                                 |
+| `STARTPOINT`                           | scalar   | geo                | ✓      | + → ST_STARTPOINT                  |
 | `STD`                                  | set      | aggregate          | ✓      |                                    |
 | `STDDEV`                               | set      | aggregate          | ✓      | ✓                                 |
 | `STDDEV_POP`                           | set      | aggregate          | ✓      | ✓                                 |
@@ -511,32 +511,32 @@ Sources:
 | `SUBTIME`                              | scalar   | date/time          | ✓      |                                    |
 | `SUM`                                  | set      | aggregate          | ✓      | ✓                                 |
 | `SYS_CONNECT_BY_PATH`                  | scalar   | hierarchy          |         | ✓                                 |
-| `SYS.EXTRACT_SCHEMA_FROM_FILE_NAME`    | scalar   | system             | ✓      |                                    |
-| `SYS.EXTRACT_TABLE_FROM_FILE_NAME`     | scalar   | system             | ✓      |                                    |
-| `SYS.FORMAT_BYTES`                     | scalar   | system             | ✓      |                                    |
-| `SYS.FORMAT_PATH`                      | scalar   | system             | ✓      |                                    |
-| `SYS.FORMAT_STATEMENT`                 | scalar   | system             | ✓      |                                    |
-| `SYS.FORMAT_TIME`                      | scalar   | system             | ✓      |                                    |
-| `SYS.LIST_ADD`                         | scalar   | system             | ✓      |                                    |
-| `SYS.LIST_DROP`                        | scalar   | system             | ✓      |                                    |
-| `SYS.PS_IS_ACCOUNT_ENABLED`            | scalar   | system             | ✓      |                                    |
-| `SYS.PS_IS_CONSUMER_ENABLED`           | scalar   | system             | ✓      |                                    |
-| `SYS.PS_IS_INSTRUMENT_DEFAULT_ENABLED` | scalar   | system             | ✓      |                                    |
-| `SYS.PS_IS_INSTRUMENT_DEFAULT_TIMED`   | scalar   | system             | ✓      |                                    |
-| `SYS.PS_IS_THREAD_INSTRUMENTED`        | scalar   | system             | ✓      |                                    |
-| `SYS.PS_THREAD_ACCOUNT`                | scalar   | system             | ✓      |                                    |
-| `SYS.PS_THREAD_ID`                     | scalar   | system             | ✓      |                                    |
-| `SYS.PS_THREAD_STACK`                  | scalar   | system             | ✓      |                                    |
-| `SYS.PS_THREAD_TRX_INFO`               | scalar   | system             | ✓      |                                    |
-| `SYS.QUOTE_IDENTIFIER`                 | scalar   | system             | ✓      |                                    |
-| `SYS.SYS_GET_CONFIG`                   | scalar   | system             | ✓      |                                    |
-| `SYS.VERSION_MAJOR`                    | scalar   | system             | ✓      |                                    |
-| `SYS.VERSION_MINOR`                    | scalar   | system             | ✓      |                                    |
-| `SYS.VERSION_PATCH`                    | scalar   | system             | ✓      |                                    |
+| `SYS.EXTRACT_SCHEMA_FROM_FILE_NAME`    | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.EXTRACT_TABLE_FROM_FILE_NAME`     | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.FORMAT_BYTES`                     | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.FORMAT_PATH`                      | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.FORMAT_STATEMENT`                 | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.FORMAT_TIME`                      | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.LIST_ADD`                         | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.LIST_DROP`                        | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_IS_ACCOUNT_ENABLED`            | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_IS_CONSUMER_ENABLED`           | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_IS_INSTRUMENT_DEFAULT_ENABLED` | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_IS_INSTRUMENT_DEFAULT_TIMED`   | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_IS_THREAD_INSTRUMENTED`        | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_THREAD_ACCOUNT`                | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_THREAD_ID`                     | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_THREAD_STACK`                  | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.PS_THREAD_TRX_INFO`               | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.QUOTE_IDENTIFIER`                 | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.SYS_GET_CONFIG`                   | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.VERSION_MAJOR`                    | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.VERSION_MINOR`                    | scalar   | system             | ✓      | ✕[^2]                             |
+| `SYS.VERSION_PATCH`                    | scalar   | system             | ✓      | ✕[^2]                             |
 | `SYS_GUID`                             | scalar   | misc               | ✓      | ✓                                 |
 | `SYSDATE`                              | scalar   | date/time          | ✓      | ✓                                 |
 | `SYSTIMESTAMP`                         | scalar   | date/time          |         | ✓                                 |
-| `SYSTEM_USER`                          | scalar   | information        | ✓      |                                    |
+| `SYSTEM_USER`                          | scalar   | information        | ✓      | +                                  |
 | `TAN`                                  | scalar   | math               | ✓      | ✓                                 |
 | `TANH`                                 | scalar   | math               |         | ✓                                 |
 | `TIMEDIFF`                             | scalar   | date/time          | ✓      |                                    |
@@ -580,7 +580,7 @@ Sources:
 | `VEC_FromText`                         | scalar   | vector             | ✓      |                                    |
 | `VEC_ToText`                           | scalar   | vector             | ✓      |                                    |
 | `VALUE2PROC`                           | scalar   | information        |         | ✓                                 |
-| `VERSION`                              | scalar   | information        | ✓      |                                    |
+| `VERSION`                              | scalar   | information        | ✓      | +                                  |
 | `WEEK`                                 | scalar   | date/time          | ✓      | ✓                                 |
 | `WEEKDAY`                              | scalar   | date/time          | ✓      |                                    |
 | `WEEKOFYEAR`                           | scalar   | date/time          | ✓      |                                    |
@@ -598,4 +598,6 @@ Sources:
 
 Legend: ✓ built-in, + added by `more-functions`, + → alias added by `more-functions`, ✕currently not coverable
 
-¹ Requires binary type
+[^1]: Requires binary type
+
+[^2]: The `SYS` schema cannot be modified
