@@ -1,8 +1,9 @@
 import re
-import pytest
 from test.integration.more_functions.scalar_function_test_base import (
     ScalarFunctionTestBase,
 )
+
+import pytest
 
 
 class TestMetadataFunctions(ScalarFunctionTestBase):
@@ -19,9 +20,7 @@ class TestMetadataFunctions(ScalarFunctionTestBase):
         self, source_name, invocation, expected_query
     ):
         self.load_function(source_name)
-        expected = self.connection.execute(
-            f"select {expected_query}"
-        ).fetchall()[0][0]
+        expected = self.connection.execute(f"select {expected_query}").fetchall()[0][0]
         self.assert_query(f"select {invocation}", expected)
 
     # [itest -> scn~metadata-version-function~1]

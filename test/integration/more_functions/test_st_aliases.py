@@ -9,7 +9,9 @@ import pytest
 class TestStAliases(ScalarFunctionTestBase):
     def _fetch_single_value(self, query):
         rows = self.connection.execute(query).fetchall()
-        assert len(rows) == 1, f"Expected exactly one row for query {query!r}, got {rows!r}"
+        assert (
+            len(rows) == 1
+        ), f"Expected exactly one row for query {query!r}, got {rows!r}"
         assert (
             len(rows[0]) == 1
         ), f"Expected exactly one column for query {query!r}, got {rows[0]!r}"
@@ -27,9 +29,7 @@ class TestStAliases(ScalarFunctionTestBase):
         )
 
     def _assert_same_sql_type(self, alias_expression, target_expression):
-        alias_sql_type = self._fetch_single_value(
-            f"select typeof({alias_expression})"
-        )
+        alias_sql_type = self._fetch_single_value(f"select typeof({alias_expression})")
         target_sql_type = self._fetch_single_value(
             f"select typeof({target_expression})"
         )
@@ -42,7 +42,9 @@ class TestStAliases(ScalarFunctionTestBase):
         )
 
     def _assert_same_pyexasol_type(self, alias_query, target_query):
-        alias_metadata = next(iter(self.connection.execute(alias_query).columns().values()))
+        alias_metadata = next(
+            iter(self.connection.execute(alias_query).columns().values())
+        )
         target_metadata = next(
             iter(self.connection.execute(target_query).columns().values())
         )
