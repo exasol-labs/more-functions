@@ -57,7 +57,7 @@ Automated integration tests load the SQL definitions into the target schema befo
 
 ### Traceability
 
-Requirements are defined in `../system_requirements/system_requirements.md` and linked detail documents.
+Requirements are defined in [`doc/system_requirements/system_requirements.md`](../system_requirements/system_requirements.md) and linked detail documents.
 Design items in this document cover function requirements where technical decisions are needed.
 Source code and tests provide lower-level coverage.
 
