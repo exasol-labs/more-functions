@@ -48,7 +48,3 @@ jobs:
         env:
           SONAR_TOKEN: "${{ secrets.SONAR_TOKEN }}"
         run: poetry run -- nox -s sonar:check
-
-      - name: Run OFT Trace
-        id: run-oft-trace
-        run: poetry run -- nox -s oft:trace

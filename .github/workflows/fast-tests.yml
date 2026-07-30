@@ -34,6 +34,9 @@ jobs:
         id: run-unit-tests
         run: poetry run -- nox -s test:unit -- --coverage
 
+      - name: Run OFT Trace
+        id: run-oft-trace
+        run: poetry run -- nox -s oft:trace
       - name: Upload Artifacts
         id: upload-artifacts
         uses: actions/upload-artifact@v7
