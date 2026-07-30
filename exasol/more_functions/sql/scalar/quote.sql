@@ -1,4 +1,3 @@
--- [impl -> dsn~quote-function~1]
 create or replace function quote (val varchar(2000000))
 return varchar(2000000)
 is

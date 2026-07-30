@@ -6,7 +6,7 @@ from test.integration.more_functions.scalar_function_test_base import (
 import pytest
 
 
-# [utest -> dsn~function-source-loader-selection~1]
+# [itest -> dsn~function-source-loader-selection~1]
 def test_prepare_sql_function_source_keeps_source_unchanged() -> None:
     source = "CREATE SCRIPT function_name AS\n/\n"
     prepared_source = ScalarFunctionTestBase._prepare_function_source(
@@ -15,7 +15,7 @@ def test_prepare_sql_function_source_keeps_source_unchanged() -> None:
     assert prepared_source == source
 
 
-# [utest -> dsn~lua-function-source-header~1]
+# [itest -> dsn~lua-function-source-header~1]
 def test_prepare_lua_function_source_strips_only_header_prefixes() -> None:
     source = """\
 --| CREATE LUA SCALAR SCRIPT function_name()

@@ -74,14 +74,14 @@ Lua scalar functions are implemented as standalone Exasol Lua scalar script defi
 
 The integration-test function loader selects the source format from the file extension: SQL function definitions use `.sql` files and Lua function sources use `.lua` files. SQL source content is executed unchanged; Lua source content is prepared according to the Lua source-header design.
 
-Needs: utest
+Needs: itest
 
 #### Lua Function Source Header
 `dsn~lua-function-source-header~1`
 
 Lua function sources are stored as `.lua` files in their respective function categories. Their Exasol SQL declaration lines use the `--| ` prefix; the remaining lines are ordinary Lua code. Before execution, the Lua loader removes the prefix from the declaration lines and appends the SQL script terminator.
 
-Needs: utest
+Needs: itest
 
 ## Architecture Decisions
 

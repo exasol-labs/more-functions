@@ -10,12 +10,12 @@ class TestMetadataFunctions(ScalarFunctionTestBase):
     @pytest.mark.parametrize(
         "source_name, invocation, expected_query",
         [
+            # [itest -> dsn~database-returns-current-schema~1]
             ("database", "DATABASE()", "current_schema"),
+            # [itest -> dsn~connection-id-returns-current-session~1]
             ("connection_id", "CONNECTION_ID()", "current_session"),
         ],
     )
-    # [itest -> scn~metadata-database-function~1]
-    # [itest -> scn~metadata-connection-id-function~1]
     def test_function_returns_current_session_value(
         self, source_name, invocation, expected_query
     ):
@@ -23,7 +23,7 @@ class TestMetadataFunctions(ScalarFunctionTestBase):
         expected = self.connection.execute(f"select {expected_query}").fetchall()[0][0]
         self.assert_query(f"select {invocation}", expected)
 
-    # [itest -> scn~metadata-version-function~1]
+    # [itest -> dsn~version-returns-exasol-db-version~1]
     def test_version_function_returns_database_version(self):
         self.load_function("version")
         actual = self.connection.execute("select version()").fetchall()[0][0]

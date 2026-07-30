@@ -31,7 +31,7 @@ Out of scope:
 ## Design References
 
 * [System Requirements](../system_requirements/system_requirements.md)
-* [Design](../design.md)
+* [Design](../design/design.md)
 * [Developer Guide](../developer_guide.rst)
 * [Function Coverage](../user_guide/function_coverage.md)
 * [Unreleased Changelog](../changes/unreleased.md)
@@ -66,7 +66,7 @@ developer guide, Nox sessions, and existing Lua-function changesets.
 
 - [x] Add the deployable metadata-backed compatibility functions to the scalar-function index and create dedicated requirement files for `DATABASE()`, `CONNECTION_ID()`, and `VERSION()`.
 - [x] Stop and ask user for a review of the system requirements.
-- [x] Add design items to `doc/design.md` describing one no-argument Lua scalar script per deployable compatibility name, direct `exa.meta` reads, and forwarding of each new scenario to `impl` and `itest`.
+- [x] Add design items to `../design/design.md` describing one no-argument Lua scalar script per deployable compatibility name, direct `exa.meta` reads, and forwarding of each new scenario to `impl` and `itest`.
 - [x] Record the resolved deployment decision for the `CURRENT_SCHEMA` built-in name and `SYS.VERSION_*` namespace; the on-prem Exasol backend rejects the unsupported UDF names and `SYS` is not modifiable.
 - [x] Stop and ask user for a review of the design.
 

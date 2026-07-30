@@ -21,7 +21,7 @@ Out of scope:
 ## Design References
 
 * [System Requirements](../system_requirements/system_requirements.md)
-* [Design](../design.md)
+* [Design](../design/design.md)
 * [Developer Guide](../developer_guide.rst)
 * [Function Coverage](../user_guide/function_coverage.md)
 * [Exasol Geospatial Functions](https://docs.exasol.com/db/latest/sql_references/geospatialfunctions.htm)
@@ -43,7 +43,7 @@ Add a parameterized integration-test suite, with a valid geometry fixture and pe
 
 - [ ] Add a user-facing requirement and scenario for the MariaDB-compatible geospatial alias family in `doc/system_requirements/scalar_functions/`, covering the scalar-functions feature and enumerating the supported alias-to-`ST_*` mappings.
 - [ ] Stop and ask user for a review of the system requirements.
-- [ ] Add a design item to `doc/design.md` describing one-file-per-alias SQL wrappers, signature parity with each `ST_*` target, and forwarding of the alias-family scenario to implementation and integration testing.
+- [ ] Add a design item to `../design/design.md` describing one-file-per-alias SQL wrappers, signature parity with each `ST_*` target, and forwarding of the alias-family scenario to implementation and integration testing.
 - [ ] Stop and ask user for a review of the design.
 
 ### Implementation

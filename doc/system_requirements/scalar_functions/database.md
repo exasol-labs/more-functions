@@ -5,7 +5,7 @@ The scalar function `DATABASE()` returns the current Exasol schema name.
 
 Exasol has no separate database catalog level, so the current schema is the closest available MariaDB-compatible result.
 
-Needs: scn, dsn
+Needs: scn
 
 Covers:
 - `feat~scalar-functions~1`

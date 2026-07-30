@@ -7,7 +7,7 @@ Rationale:
 
 Callers need a database-side helper that turns values into SQL string literals without reimplementing quoting rules in every query or script.
 
-Needs: scn, dsn
+Needs: scn
 
 Covers:
 - `feat~scalar-functions~1`

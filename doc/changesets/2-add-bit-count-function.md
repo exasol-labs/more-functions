@@ -24,7 +24,7 @@ Out of scope:
 ## Design References
 
 * [System Requirements](../system_requirements/system_requirements.md)
-* [Design](../design.md)
+* [Design](../design/design.md)
 * [Developer Guide](../developer_guide.rst)
 * [Function Coverage](../user_guide/function_coverage.md)
 * [Unreleased Changelog](../changes/unreleased.md)
@@ -32,7 +32,7 @@ Out of scope:
 
 ## Strategy
 
-This repository does not yet contain a dedicated `doc/design/quality_requirements.md` or an existing `doc/changesets/README.md`, so this changeset derives its verification tasks from the current project conventions in `doc/design.md`, `doc/developer_guide.rst`, the existing OFT setup in `noxfile.py`, and the integration-test layout under `test/`.
+This repository does not yet contain a dedicated `doc/design/quality_requirements.md` or an existing `doc/changesets/README.md`, so this changeset derives its verification tasks from the current project conventions in `../design/design.md`, `doc/developer_guide.rst`, the existing OFT setup in `noxfile.py`, and the integration-test layout under `test/`.
 
 The implementation should stay aligned with the repository structure by introducing a dedicated requirement file for `BIT_COUNT`, extending the shared design with one technical design item, and keeping behavior details in the requirement scenarios. Since the issue explicitly asks for a Lua function, the design needs to define how Lua scalar functions are stored and loaded for tests before production code is added.
 
@@ -45,7 +45,7 @@ The implementation should stay aligned with the repository structure by introduc
 - [x] Add `BIT_COUNT` to the scalar-function index in `../system_requirements/system_requirements.md`
 - [x] Create `doc/system_requirements/scalar_functions/bit_count.md` with one user-facing requirement for MariaDB-compatible bit counting and scenario items for representative Exasol integer argument forms
 - [x] Stop and ask user for a review of the system requirements
-- [x] Extend `doc/design.md` with `dsn~bit-count-function~1` describing the Lua scalar function location, runtime behavior, and forwarding from scenarios to `impl` and `itest`
+- [x] Extend `../design/design.md` with `dsn~bit-count-function~1` describing the Lua scalar function location, runtime behavior, and forwarding from scenarios to `impl` and `itest`
 - [x] Add a compact agent file that explains which repository files and trace artifacts must be updated when introducing a new function
 - [x] Stop and ask user for a review of the design
 

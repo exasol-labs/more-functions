@@ -31,7 +31,7 @@ Out of scope:
 
 * [System Requirements](../system_requirements/system_requirements.md)
 * [BIT_COUNT Requirements](../system_requirements/scalar_functions/bit_count.md)
-* [Design](../design.md)
+* [Design](../design/design.md)
 * [Developer Guide](../developer_guide.rst)
 * [Existing BIT_COUNT Changeset](2-add-bit-count-function.md)
 
@@ -63,7 +63,7 @@ reproducible Lua lint tooling needed by its acceptance criterion.
 
 - [x] Confirm that `req~bit-count-function~2` and its scenarios remain accurate because the externally observable function behavior does not change; do not revise their IDs or text.
 - [x] Stop and ask user for a review of the unchanged system requirements decision.
-- [x] Add `dsn~function-source-loader-selection~1` and `dsn~lua-function-source-header~1` to `doc/design.md` to define reusable extension-based source selection and `--| ` Lua-header processing; retain `dsn~bit-count-function~2` because BIT_COUNT behavior and design remain unchanged.
+- [x] Add `dsn~function-source-loader-selection~1` and `dsn~lua-function-source-header~1` to `../design/design.md` to define reusable extension-based source selection and `--| ` Lua-header processing; retain `dsn~bit-count-function-block~2` because BIT_COUNT behavior and design remain unchanged.
 - [x] Stop and ask user for a review of the design.
 
 ### Implementation

@@ -3,7 +3,7 @@
 
 The scalar function `BIT_COUNT(value)` returns the number of bits that are set to `1` in the 64-bit integer value produced from an integer-valued input. Values above `18446744073709551615` saturate to that maximum, values below `-9223372036854775808` saturate to that minimum, and bits above the 64-bit range are ignored.
 
-Needs: scn, dsn
+Needs: scn
 
 Covers:
 - `feat~scalar-functions~1`

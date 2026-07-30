@@ -1,5 +1,3 @@
--- [impl -> dsn~bit-count-function~2]
--- [impl -> dsn~lua-function-source-header~1]
 --| CREATE OR REPLACE LUA SCALAR SCRIPT bit_count (val DECIMAL(36,0))
 --| RETURNS DECIMAL(2,0) AS
 local ZERO = decimal(0, 36, 0)

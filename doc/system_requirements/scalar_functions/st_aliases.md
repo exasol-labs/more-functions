@@ -5,7 +5,7 @@
 
 `more-functions` provides the MariaDB-compatible unprefixed aliases for the available Exasol geospatial `ST_*` functions identified in the function coverage matrix. Each alias accepts the same parameters as its corresponding `ST_*` function and returns its result unchanged. Aliases whose MariaDB semantics require a binary type are not provided because Exasol has no binary type and therefore no corresponding `ST_*` function.
 
-Needs: dsn
+Needs: scn
 
 Covers:
 - `feat~scalar-functions~1`
