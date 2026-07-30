@@ -9,7 +9,7 @@ class ScalarFunctionTestBase:
         self.connection = connection
 
     def load_function(self, name):
-        # [impl -> dsn~function-source-loader-selection~1]
+        # [itest -> dsn~function-source-loader-selection~1]
         function_files = [
             Path("exasol/more_functions/sql/scalar") / f"{name}.sql",
             Path("exasol/more_functions/lua/scalar") / f"{name}.lua",
@@ -26,7 +26,7 @@ class ScalarFunctionTestBase:
     def _prepare_function_source(function_file, source):
         if function_file.suffix != ".lua":
             return source
-        # [impl -> dsn~lua-function-source-header~1]
+        # [itest -> dsn~lua-function-source-header~1]
         return (
             "\n".join(line.removeprefix("--| ") for line in source.splitlines())
             + "\n/\n"

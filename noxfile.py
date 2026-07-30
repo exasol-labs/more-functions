@@ -81,7 +81,7 @@ def lint_lua(session: nox.Session) -> None:
         "-c",
         'eval "$(luarocks --local path)" && '
         "luacheck exasol/more_functions/lua "
-        "--globals decimal null run",
+        "--globals decimal exa null run",
     )
 
 

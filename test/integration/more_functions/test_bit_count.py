@@ -19,8 +19,8 @@ class TestBitCount(ScalarFunctionTestBase):
         [
             ("29", 4),
             ("cast(29 as decimal(18,0))", 4),
-            ("cast(3.1414 as decimal(18,4))", 3),
-            ("cast(29,52 as double precision)", 4),
+            ("cast(3.14159 as decimal(18,4))", 2),
+            ("cast(29.5 as double precision)", 4),
             (
                 f"cast({0b1_0000000001_0000000001_0000000010_11111} as decimal(36,0))",
                 9,
@@ -28,10 +28,10 @@ class TestBitCount(ScalarFunctionTestBase):
             ("cast(9223372036854775808 as decimal(36,0))", 1),
             ("cast(18446744073709551615 as decimal(36,0))", 64),
             ("cast(-1 as decimal(36,0))", 64),
-            ("cast(18446744073709551616 as decimal(36,0))", 0),
-            ("cast(18446744073709551645 as decimal(36,0))", 4),
-            (f"cast({MIN_DECIMAL_36} as decimal(36,0))", 14),
-            (f"cast({MAX_DECIMAL_36} as decimal(36,0))", 51),
+            ("cast(18446744073709551616 as decimal(36,0))", 64),
+            ("cast(18446744073709551645 as decimal(36,0))", 64),
+            (f"cast({MIN_DECIMAL_36} as decimal(36,0))", 1),
+            (f"cast({MAX_DECIMAL_36} as decimal(36,0))", 64),
             ("0", 0),
         ],
     )

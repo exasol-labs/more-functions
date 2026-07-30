@@ -18,6 +18,10 @@ Status: approved
 
 #### Scalar Functions
 
-- [BIT_COUNT](system_requirements/scalar_functions/bit_count.md)
-- [QUOTE](system_requirements/scalar_functions/quote.md)
-- [ST_* Aliases](system_requirements/scalar_functions/st_aliases.md)
+- [BIT_COUNT](scalar_functions/bit_count.md)
+- [DATABASE](scalar_functions/database.md)
+- [CONNECTION_ID](scalar_functions/connection_id.md)
+- [VERSION](scalar_functions/version.md)
+- [QUOTE](scalar_functions/quote.md)
+- [ST_* Aliases](scalar_functions/st_aliases.md)
+- [SYS.* Functions](scalar_functions/sys_functions.md)

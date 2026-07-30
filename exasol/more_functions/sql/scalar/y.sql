@@ -1,3 +1,7 @@
 -- [impl -> dsn~st-alias-functions~1]
-create or replace function y (value geometry) return double is begin return st_y(value); end y;
+create or replace function y (val geometry) return double
+is
+begin
+    return st_y (val);
+end y;
 /
