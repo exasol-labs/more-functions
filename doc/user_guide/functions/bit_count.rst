@@ -3,7 +3,7 @@
 BIT_COUNT
 =========
 
-``BIT_COUNT`` counts the bits set to ``1`` in the low 64 bits of an integer value.
+``BIT_COUNT`` counts the bits set to ``1`` in the low 64 bits of an integer-valued input.
 
 Syntax
 ------
@@ -26,7 +26,7 @@ The function returns the number of set bits in ``n``.
 
 It uses the low 64 bits; bits above that range are ignored.
 
-Given a noninteger number, the fractional part is ignored.
+Given an integer-valued input, the fractional part is ignored.
 
 Negative values are interpreted using a 64-bit two's-complement representation.
 
