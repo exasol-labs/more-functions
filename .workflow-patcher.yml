@@ -24,3 +24,12 @@ workflows:
           - name: Install Lua Dependencies
             id: install-lua-dependencies
             run: poetry run -- nox -s lua:install-dependencies
+  - name: report
+    step_customizations:
+      - action: INSERT_AFTER
+        job: report
+        step_id: upload-to-sonar
+        content:
+          - name: Run OFT Trace
+            id: run-oft-trace
+            run: poetry run -- nox -s oft:trace
