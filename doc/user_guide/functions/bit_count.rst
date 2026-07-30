@@ -61,7 +61,7 @@ Returns ``4``.
 
 .. code-block:: sql
 
-   SELECT BIT_COUNT(CAST(3.1414 AS DECIMAL(18,4)));
+   SELECT BIT_COUNT(CAST(3.14159 AS DECIMAL(18,4)));
 
 Returns ``2``. The input is converted to the function's integer-valued parameter.
 

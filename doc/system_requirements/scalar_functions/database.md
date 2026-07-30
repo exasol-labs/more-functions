@@ -2,8 +2,8 @@
 `req~metadata-database-function~1`
 
 The scalar function `DATABASE()` returns the current Exasol schema name.
-Exasol has no separate database catalog level, so the current schema is the
-closest available MariaDB-compatible result.
+
+Exasol has no separate database catalog level, so the current schema is the closest available MariaDB-compatible result.
 
 Needs: scn
 

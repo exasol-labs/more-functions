@@ -3,8 +3,7 @@
 DATABASE
 --------
 
-``DATABASE()`` returns the current Exasol schema name. Exasol has no separate
-database catalog level, so the current schema is the closest available result.
+``DATABASE()`` returns the current Exasol schema name. Exasol has no separate database catalog level, so the current schema is the closest available result.
 
 Syntax
 ------
