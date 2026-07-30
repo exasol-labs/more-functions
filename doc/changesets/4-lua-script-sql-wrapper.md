@@ -29,7 +29,7 @@ Out of scope:
 
 ## Design References
 
-* [System Requirements](../system_requirements.md)
+* [System Requirements](../system_requirements/system_requirements.md)
 * [BIT_COUNT Requirements](../system_requirements/scalar_functions/bit_count.md)
 * [Design](../design.md)
 * [Developer Guide](../developer_guide.rst)

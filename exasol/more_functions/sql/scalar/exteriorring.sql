@@ -1,3 +1,7 @@
 -- [impl -> dsn~st-alias-functions~1]
-create or replace function exteriorring (value geometry) return geometry is begin return st_exteriorring(value); end exteriorring;
+create or replace function exteriorring (val geometry) return geometry
+is
+begin
+    return st_exteriorring (val);
+end exteriorring;
 /

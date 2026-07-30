@@ -23,7 +23,7 @@ Out of scope:
 
 ## Design References
 
-* [System Requirements](../system_requirements.md)
+* [System Requirements](../system_requirements/system_requirements.md)
 * [Design](../design.md)
 * [Developer Guide](../developer_guide.rst)
 * [Function Coverage](../user_guide/function_coverage.md)
@@ -42,7 +42,7 @@ The implementation should stay aligned with the repository structure by introduc
 
 ### Requirements And Design
 
-- [x] Add `BIT_COUNT` to the scalar-function index in `doc/system_requirements.md`
+- [x] Add `BIT_COUNT` to the scalar-function index in `../system_requirements/system_requirements.md`
 - [x] Create `doc/system_requirements/scalar_functions/bit_count.md` with one user-facing requirement for MariaDB-compatible bit counting and scenario items for representative Exasol integer argument forms
 - [x] Stop and ask user for a review of the system requirements
 - [x] Extend `doc/design.md` with `dsn~bit-count-function~1` describing the Lua scalar function location, runtime behavior, and forwarding from scenarios to `impl` and `itest`

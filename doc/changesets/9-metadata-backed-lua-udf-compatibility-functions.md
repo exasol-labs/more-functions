@@ -2,30 +2,23 @@
 
 ## Goal
 
-Provide an initial, compact family of MariaDB-compatible information functions
-whose values come directly from Exasol Lua UDF metadata. This establishes a
-repeatable pattern for compatibility functions that do not need system-table
-queries.
+Provide deployable MariaDB-compatible information functions whose values come
+directly from Exasol Lua UDF metadata. This establishes a repeatable pattern
+for compatibility functions that do not need system-table queries.
 
 ## Scope
 
 In scope:
 
-* Add no-argument Lua scalar UDFs for `CURRENT_SCHEMA()`, `DATABASE()`,
-  `SCHEMA()`, `CONNECTION_ID()`, `VERSION()`, `SYS.VERSION_MAJOR()`,
-  `SYS.VERSION_MINOR()`, `SYS.VERSION_PATCH()`, `SESSION_USER()`, and
-  `SYSTEM_USER()`.
-* Source their values from `exa.meta.current_schema`, `database_name`,
-  `session_id`, `database_version`, and `current_user`; make `SCHEMA()` an
-  alias of `DATABASE()`.
-* Parse the major, minor, and patch components from the Exasol database-version
-  string and verify representative version strings.
+* Add no-argument Lua scalar UDFs for `DATABASE()`, `CONNECTION_ID()`, and
+  `VERSION()`.
+* Source their values from `exa.meta.current_schema`, `session_id`, and
+  `database_version`.
 * Add traced requirements, design, implementation, and integration-test
   coverage; update the function-coverage matrix, user-facing caveats, and
   unreleased changelog.
-* Verify whether Exasol permits a user-defined `CURRENT_SCHEMA` function beside
-  its existing built-in and whether the normal installation schema can define
-  the `SYS.VERSION_*` names.
+* Verify whether the `SYS` schema is writable for normal user-defined
+  functions before keeping any `SYS.*` compatibility claims in scope.
 
 Out of scope:
 
@@ -37,7 +30,7 @@ Out of scope:
 
 ## Design References
 
-* [System Requirements](../system_requirements.md)
+* [System Requirements](../system_requirements/system_requirements.md)
 * [Design](../design.md)
 * [Developer Guide](../developer_guide.rst)
 * [Function Coverage](../user_guide/function_coverage.md)
@@ -46,27 +39,20 @@ Out of scope:
 
 ## Strategy
 
-Add one requirements document for this compatibility-function family, indexed
-under scalar functions. It will define one requirement and one scenario for
-each function, including its metadata mapping, alias behavior, version-component
-parsing, or intentional compatibility caveat. Add a single technical design
-item for standalone no-argument Lua scalar scripts in
-`exasol/more_functions/lua/scalar/`, then forward each scenario to
-implementation and integration testing rather than duplicating scenario text.
+Add one requirements document per deployable compatibility function, indexed
+under scalar functions. Each document defines one requirement and one scenario
+for its metadata mapping, then forwards that scenario to implementation and
+integration testing rather than duplicating scenario text.
 
 Each script should use the established `--| ` Lua SQL-header convention and
-return its corresponding `exa.meta` field without a system-table query. The
-version scripts should share only the documented parsing contract; decide from
-the observed `exa.meta.database_version` format whether compact duplicated Lua
-parsing or a project-local Lua helper is the clearest implementation.
+return its corresponding `exa.meta` field without a system-table query.
 
 Before finalizing the requirement or code, run a small deployment probe against
-the supported Exasol backend. The function-coverage matrix already records
-`CURRENT_SCHEMA` as an Exasol built-in, and `SYS` may not be a writable
-application schema. If either name cannot be installed and invoked through the
-normal mechanism, stop and resolve the issue's requested compatibility name
-and installation model with the user instead of silently omitting or renaming
-it.
+the supported Exasol backend. The probe showed that `SYS` is not a writable
+application schema, so the `SYS.VERSION_*` names are out of scope. The probe
+also showed that several MariaDB metadata names are not deployable as ordinary
+UDFs on this backend, so they were removed from this changeset instead of being
+silently renamed.
 
 This repository currently has neither `doc/design/quality_requirements.md` nor
 `doc/changesets/README.md`. Verification therefore follows the current design,
@@ -78,32 +64,30 @@ developer guide, Nox sessions, and existing Lua-function changesets.
 
 ### Requirements And Design
 
-- [x] Add the metadata-backed compatibility-function family to the scalar-function index and create `doc/system_requirements/scalar_functions/metadata_functions.md` with a requirement covering the ten requested names and user-visible results, plus one scenario per function for direct results, alias behavior, version-component parsing, and documented compatibility caveats.
+- [x] Add the deployable metadata-backed compatibility functions to the scalar-function index and create dedicated requirement files for `DATABASE()`, `CONNECTION_ID()`, and `VERSION()`.
 - [x] Stop and ask user for a review of the system requirements.
-- [x] Add a design item to `doc/design.md` describing one no-argument Lua scalar script per deployable compatibility name, direct `exa.meta` reads, the version-parser contract, and forwarding of each new scenario to `impl` and `itest`.
-- [ ] Record the resolved deployment decision for the `CURRENT_SCHEMA` built-in name and `SYS.VERSION_*` namespace; the configured on-prem Exasol backend currently fails to start (`start_itde failed`), so the required probe remains pending.
+- [x] Add design items to `doc/design.md` describing one no-argument Lua scalar script per deployable compatibility name, direct `exa.meta` reads, and forwarding of each new scenario to `impl` and `itest`.
+- [x] Record the resolved deployment decision for the `CURRENT_SCHEMA` built-in name and `SYS.VERSION_*` namespace; the on-prem Exasol backend rejects the unsupported UDF names and `SYS` is not modifiable.
 - [x] Stop and ask user for a review of the design.
 
 ### Implementation
 
-- [x] Add traced Lua scalar sources under `exasol/more_functions/lua/scalar/` for every requested compatibility name, using the existing Lua-header format and no SQL/system-table lookup.
-- [x] Implement `DATABASE()` and `SCHEMA()` as equivalent accessors for `exa.meta.current_schema`, as defined by the reviewed requirements; implement `CURRENT_SCHEMA()`, `CONNECTION_ID()`, `VERSION()`, `SESSION_USER()`, and `SYSTEM_USER()` from their specified metadata fields.
-- [x] Implement the three `SYS.VERSION_*()` functions with a parser for the major, minor, and patch components of `exa.meta.database_version`.
-- [x] Add `impl` coverage tags for the new design item and preserve the normal extension-based Lua function loader; add `exa` to the Lua-linter globals.
+- [x] Add traced Lua scalar sources under `exasol/more_functions/lua/scalar/` for the deployable compatibility names, using the existing Lua-header format and no SQL/system-table lookup.
+- [x] Implement `DATABASE()`, `CONNECTION_ID()`, and `VERSION()` from their specified metadata fields.
+- [x] Add `impl` coverage tags for the new design items and preserve the normal extension-based Lua function loader; add `exa` to the Lua-linter globals.
 
 ### Verification
 
-- [x] Add integration tests that load each script through `ScalarFunctionTestBase`, assert representative metadata-backed return values against the session/database context, and prove `DATABASE()` and `SCHEMA()` return the same value.
-- [x] Add integration tests that derive and verify all three version components from the running database version.
+- [x] Add integration tests that load each script through `ScalarFunctionTestBase` and assert representative metadata-backed return values against the session/database context.
 - [x] Add integration-test coverage tags for every new scenario.
-- [ ] Run a targeted deployment/invocation probe for `CURRENT_SCHEMA()` and all `SYS.VERSION_*()` names, recording the outcome before treating the function inventory as complete.
-- [ ] Run `poetry run nox -s lua:lint`, the affected unit tests, the targeted metadata-function integration tests, and the complete integration-test suite against an Exasol backend. Lua lint and unit tests pass, but the targeted integration test cannot start ITDE (`start_itde failed`).
+- [x] Run a targeted deployment/invocation probe for the metadata-function names and record the unsupported names before treating the function inventory as complete.
+- [ ] Run `poetry run nox -s lua:lint`, the affected unit tests, the targeted metadata-function integration tests, and the complete integration-test suite against an Exasol backend.
 - [x] Keep the OpenFastTrace trace clean for affected `feat`, `req`, `scn`, `dsn`, `impl`, and `itest` artifacts (`poetry run nox -s oft:trace`).
 
 ### Update User Documentation
 
-- [x] Update `doc/user_guide/function_coverage.md` to mark the added compatibility functions as provided by `more-functions`, while retaining the pre-existing built-in status for `CURRENT_SCHEMA` pending the deployment probe.
-- [x] Add concise user-facing documentation for the intentional semantic differences: Exasol session IDs and current-user values are exposed rather than MariaDB connection/authentication identities.
+- [x] Update `doc/user_guide/function_coverage.md` to mark the deployable compatibility functions as provided by `more-functions`, while leaving unsupported metadata names unclaimed.
+- [x] Add concise user-facing documentation for the intentional semantic differences: Exasol session IDs are exposed rather than MariaDB connection identities.
 
 ## Version And Changelog Update
 

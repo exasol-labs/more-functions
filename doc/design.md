@@ -7,7 +7,7 @@ It intentionally omits sections dedicated to user requirements.
 
 - Functions are implemented for Exasol.
 - The repository may contain SQL functions and Lua functions.
-- Behavior is specified in `doc/system_requirements.md` and linked detail files.
+- Behavior is specified in `system_requirements/system_requirements.md` and linked detail files.
 - Verification is performed through automated tests in this repository.
 
 ### SQL Functions vs. Lua Scripts
@@ -106,15 +106,14 @@ Needs: impl
 Covers:
 - `req~bit-count-function~2`
 
-#### Metadata-Backed Compatibility Function Design
-`dsn~metadata-backed-lua-functions~1`
+#### Compatibility Information Functions
 
-Each metadata-backed compatibility function is implemented as a standalone, no-argument Exasol Lua scalar script under `exasol/more_functions/lua/scalar/`.
+The deployable compatibility functions are implemented as standalone,
+no-argument Exasol Lua scalar scripts under `exasol/more_functions/lua/scalar/`.
 
-Needs: impl
-
-Covers:
-- `req~metadata-backed-lua-functions~1`
+`DATABASE()` returns `exa.meta.current_schema`.
+`CONNECTION_ID()` returns `exa.meta.session_id`.
+`VERSION()` returns `exa.meta.database_version`.
 
 ## Runtime View
 
@@ -137,19 +136,6 @@ dsn --> impl, itest : scn~bit-count-exact-numeric-integer~1
 dsn --> impl, itest : scn~bit-count-floating-point-integer~1
 dsn --> impl, itest : scn~bit-count-ignore-higher-bits~1
 
-### Metadata-Backed Compatibility Functions
-
-dsn --> impl, itest : scn~metadata-backed-lua-functions-current-schema~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-database~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-schema~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-connection-id~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-version~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-version-major~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-version-minor~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-version-patch~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-session-user~1
-dsn --> impl, itest : scn~metadata-backed-lua-functions-system-user~1
-
 ## Deployment View
 
 The function definitions are deployed into an Exasol database schema.
@@ -159,7 +145,7 @@ Automated integration tests load the SQL definitions into the target schema befo
 
 ### Traceability
 
-Requirements are defined in `doc/system_requirements.md` and linked detail documents.
+Requirements are defined in `system_requirements/system_requirements.md` and linked detail documents.
 Design items in this document cover function requirements where technical decisions are needed.
 Source code and tests provide lower-level coverage.
 
