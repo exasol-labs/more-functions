@@ -14,9 +14,7 @@ Covers:
 `scn~st-alias-functions~1`
 
 **Given** a geospatial operation for which MariaDB defines an unprefixed alias and Exasol provides the corresponding `ST_*` function
-
 **When** a caller invokes the alias with valid parameters for that operation
-
 **Then** the alias accepts those parameters and returns the result of the corresponding Exasol `ST_*` function
 
 Needs: dsn

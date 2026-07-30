@@ -1,5 +1,5 @@
 # CONNECTION_ID
-`req~metadata-connection-id-function~1`
+`req~connection-id-function~1`
 
 The scalar function `CONNECTION_ID()` returns the current Exasol session identifier.
 
@@ -9,7 +9,7 @@ Covers:
 - `feat~scalar-functions~1`
 
 ## CONNECTION_ID Invocation
-`scn~metadata-connection-id-function~1`
+`scn~connection-id-returns-current-session~1`
 
 **Given** a caller has an active Exasol session
 **When** the caller invokes `CONNECTION_ID()`
@@ -18,4 +18,4 @@ Covers:
 Needs: dsn
 
 Covers:
-- `req~metadata-connection-id-function~1`
+- `req~connection-id-function~1`

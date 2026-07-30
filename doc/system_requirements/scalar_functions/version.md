@@ -1,5 +1,5 @@
 # VERSION
-`req~metadata-version-function~1`
+`req~version-function~1`
 
 The scalar function `VERSION()` returns the Exasol database version string.
 
@@ -9,7 +9,7 @@ Covers:
 - `feat~scalar-functions~1`
 
 ## VERSION Invocation
-`scn~metadata-version-function~1`
+`scn~version-returns-exasol-db-version~1`
 
 **Given** a caller has an active Exasol session
 **When** the caller invokes `VERSION()`
@@ -18,4 +18,4 @@ Covers:
 Needs: dsn
 
 Covers:
-- `req~metadata-version-function~1`
+- `req~version-function~1`
