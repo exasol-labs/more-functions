@@ -29,10 +29,10 @@ Sources:
 | `ADD_SECONDS`                          | scalar   | date/time          |         | ✓                                |
 | `ADD_WEEKS`                            | scalar   | date/time          |         | ✓                                |
 | `ADD_YEARS`                            | scalar   | date/time          |         | ✓                                |
-| `ADDDATE`                              | scalar   | date/time          | ✓      |                                   |
-| `ADDTIME`                              | scalar   | date/time          | ✓      |                                   |
-| `AES_DECRYPT`                          | scalar   | crypto/compression | ✓      |                                   |
-| `AES_ENCRYPT`                          | scalar   | crypto/compression | ✓      |                                   |
+| `ADDDATE`                              | scalar   | date/time          | ✓      | x[^5]                             |
+| `ADDTIME`                              | scalar   | date/time          | ✓      | x[^5]                             |
+| `AES_DECRYPT`                          | scalar   | crypto/compression | ✓      | x[^5]                             |
+| `AES_ENCRYPT`                          | scalar   | crypto/compression | ✓      | x[^5]                             |
 | `ANY`                                  | set      | aggregate          |         | ✓                                |
 | `APPROXIMATE_COUNT_DISTINCT`           | set      | aggregate          |         | ✓                                |
 | `AREA`                                 | scalar   | geo                | ✓      | + → ST_AREA                       |
@@ -45,7 +45,7 @@ Sources:
 | `ATAN`                                 | scalar   | math               | ✓      | ✓                                |
 | `ATAN2`                                | scalar   | math               | ✓      | ✓                                |
 | `AVG`                                  | set      | aggregate          | ✓      | ✓                                |
-| `BENCHMARK`                            | scalar   | information        | ✓      |                                   |
+| `BENCHMARK`                            | scalar   | information        | ✓      | x[^6]                             |
 | `BIN`                                  | scalar   | string             | ✓      |                                   |
 | `BINLOG_GTID_POS`                      | scalar   | information        | ✓      |                                   |
 | `BIT_AND`                              | set      | aggregate          | ✓      | ✓                                |
@@ -605,3 +605,7 @@ Legend: ✓ built-in, + added by `more-functions`, + → alias added by `more-fu
 [^3]: Conflicts with a reserved keyword
 
 [^4]: Function to which the alias should point does not exist in Exasol
+
+[^5]: Cannot be solved with SQL and no pure Lua library available
+
+[^6]: Requires SQL features not available in Exasol
