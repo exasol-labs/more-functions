@@ -1,4 +1,4 @@
-.. _sys_functions:
+.. _st_function_aliases:
 
 ``ST_*`` Function Aliases
 =========================
