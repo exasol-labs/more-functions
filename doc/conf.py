@@ -36,7 +36,7 @@ exclude_patterns = [
     ".DS_Store",
     ".build-docu",
     "changesets/**",
-    "design/**"
+    "design/**",
     "system_requirements/**",
 ]
 
