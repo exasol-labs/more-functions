@@ -87,7 +87,7 @@ Sources:
 | `COMPRESS`                             | scalar   | crypto/compression | ✓      |                                   |
 | `CONCAT`                               | scalar   | string             | ✓      | ✓                                |
 | `CONCAT_WS`                            | scalar   | string             | ✓      |                                   |
-| `CONNECTION_ID`                        | scalar   | information        | ✓      | +                                 |
+| `CONNECTION_ID`                        | scalar   | information        | ✓      | + → CURRENT_SESSION               |
 | `CONNECT_BY_ISCYCLE`                   | scalar   | hierarchy          |         | ✓                                |
 | `CONNECT_BY_ISLEAF`                    | scalar   | hierarchy          |         | ✓                                |
 | `CONTAINS`                             | scalar   | geo                | ✓      | ✕[^3]                            |
@@ -117,7 +117,7 @@ Sources:
 | `CURRENT_TIMESTAMP`                    | scalar   | date/time          | ✓      | ✓                                |
 | `CURRENT_USER`                         | scalar   | information        | ✓      | ✓                                |
 | `CURTIME`                              | scalar   | date/time          | ✓      |                                   |
-| `DATABASE`                             | scalar   | information        | ✓      | +                                 |
+| `DATABASE`                             | scalar   | information        | ✓      | + → CURRENT_SCHEMA                |
 | `DATE_TRUNC`                           | scalar   | date/time          |         | ✓                                |
 | `DATEDIFF`                             | scalar   | date/time          | ✓      |                                   |
 | `DATE_ADD`                             | scalar   | date/time          | ✓      |                                   |
