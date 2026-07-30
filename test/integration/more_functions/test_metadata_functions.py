@@ -10,11 +10,7 @@ class TestMetadataFunctions(ScalarFunctionTestBase):
         "source_name, invocation, expected_query",
         [
             ("database", "DATABASE()", "current_schema"),
-            (
-                "connection_id",
-                "CONNECTION_ID()",
-                "current_session",
-            ),
+            ("connection_id", "CONNECTION_ID()", "current_session"),
         ],
     )
     # [itest -> scn~metadata-database-function~1]
