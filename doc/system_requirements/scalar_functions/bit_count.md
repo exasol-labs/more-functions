@@ -1,7 +1,7 @@
 # BIT_COUNT
 `req~bit-count-function~2`
 
-The scalar function `BIT_COUNT(value)` returns the number of bits that are set to `1` in the low 64 bits of an integer-valued input. Bits above the signed 64-bit range are ignored.
+The scalar function `BIT_COUNT(value)` returns the number of bits that are set to `1` in the 64-bit integer value produced from an integer-valued input. Values above `18446744073709551615` saturate to that maximum, values below `-9223372036854775808` saturate to that minimum, and bits above the 64-bit range are ignored.
 
 Needs: scn, dsn
 
@@ -61,7 +61,7 @@ Covers:
 
 **Given** an integer-valued input with bits above the low 64 bits set
 **When** `BIT_COUNT(value)` is executed
-**Then** the function returns the number of bits set in the low 64 bits and ignores all higher bits.
+**Then** the function returns the number of bits set in the 64-bit integer value produced from the integer-valued input and ignores all higher bits.
 
 Needs: dsn
 

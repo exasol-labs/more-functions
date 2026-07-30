@@ -98,7 +98,7 @@ Needs: impl, utest
 
 The `bit_count` function is implemented as an Exasol Lua scalar script with a `DECIMAL(36,0)` input parameter.
 For `NULL` input it returns `NULL`.
-For non-null integer-valued input it counts the set bits in the low 64 bits and returns that count.
+For non-null integer-valued input it applies MariaDB-compatible 64-bit saturation before counting set bits: values above `18446744073709551615` count as `64`, values below `-9223372036854775808` count as `1`, and all other values count the set bits in the resulting 64-bit integer.
 The implementation normalizes negative values into a two's-complement representation, extracts its two low 32-bit blocks, and counts the set bits in each block with Lua integer bit operations. It deliberately does not process higher blocks; in particular, it retains the upper 32-bit block of the low 64-bit word.
 
 Needs: impl
