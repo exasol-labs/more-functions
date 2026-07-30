@@ -1,7 +1,7 @@
 # System Requirements
 
 This document is the entry point for user-facing requirements of `more-functions`.
-Detailed requirements for individual functions live in dedicated files below ``.
+Detailed requirements for individual functions live in dedicated files below `doc/system_requirements/`.
 
 ## Features
 

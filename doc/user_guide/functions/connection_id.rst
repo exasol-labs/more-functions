@@ -21,4 +21,4 @@ Parameter / Return Type              Range
 Return             ``DECIMAL(20,0)``
 ================== ================= ===============
 
-Returns the numeric session ID.
+Returns the session ID.
