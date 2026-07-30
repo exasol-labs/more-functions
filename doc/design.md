@@ -109,10 +109,10 @@ Covers:
 #### Compatibility Information Functions
 
 The deployable compatibility functions are implemented as standalone,
-no-argument Exasol Lua scalar scripts under `exasol/more_functions/lua/scalar/`.
+no-argument Exasol SQL scalar functions under `exasol/more_functions/sql/scalar/`.
 
-`DATABASE()` returns `exa.meta.current_schema`.
-`CONNECTION_ID()` returns `exa.meta.session_id`.
+`DATABASE()` returns `CURRENT_SCHEMA`.
+`CONNECTION_ID()` returns `CURRENT_SESSION`.
 `VERSION()` returns `exa.meta.database_version`.
 
 ## Runtime View
