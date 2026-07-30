@@ -37,7 +37,9 @@ Unsupported Functions
 
 The following functions either conflict with existing reserved words or are reserved but not implemented in the Exasol core database:
 
+- ``CONTAINS``
 - ``CURRENT_SCHEMA``
+- ``EQUALS``
 - ``OVERLAPS``
 - ``SCHEMA``
 - ``SESSION_USER``

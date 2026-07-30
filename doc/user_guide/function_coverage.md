@@ -90,7 +90,7 @@ Sources:
 | `CONNECTION_ID`                        | scalar   | information        | ✓      | +                                 |
 | `CONNECT_BY_ISCYCLE`                   | scalar   | hierarchy          |         | ✓                                |
 | `CONNECT_BY_ISLEAF`                    | scalar   | hierarchy          |         | ✓                                |
-| `CONTAINS`                             | scalar   | geo                | ✓      | + → ST_CONTAINS                   |
+| `CONTAINS`                             | scalar   | geo                | ✓      | ✕[^3]                            |
 | `CONVERT`                              | scalar   | string             | ✓      | ✓                                |
 | `CONV`                                 | scalar   | math               | ✓      |                                   |
 | `CONVERT_TZ`                           | scalar   | date/time          | ✓      | ✓                                |
@@ -147,7 +147,7 @@ Sources:
 | `ENCRYPT`                              | scalar   | crypto/compression | ✓      |                                   |
 | `ENDPOINT`                             | scalar   | geo                | ✓      | + → ST_ENDPOINT                   |
 | `ENVELOPE`                             | scalar   | geo                | ✓      | + → ST_ENVELOPE                   |
-| `EQUALS`                               | scalar   | geo                | ✓      | + → ST_EQUALS                     |
+| `EQUALS`                               | scalar   | geo                | ✓      | ✕[^3]                            |
 | `EVERY`                                | set      | aggregate          |         | ✓                                |
 | `EXP`                                  | scalar   | math               | ✓      | ✓                                |
 | `EXPORT_SET`                           | scalar   | string             | ✓      |                                   |
