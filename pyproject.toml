@@ -36,6 +36,8 @@ dev = [
     "pyexasol>=2.0.0,<3",
     "pytest>=9.0.0,<10",
     "pytest-exasol-backend>=1.3.0,<2",
+    # Set minimum requirement for transitive dependency to fix CVE-2026-111497
+    "brotli (>=1.2.1)",
 ]
 
 [build-system]
