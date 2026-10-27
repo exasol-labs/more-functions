@@ -13,6 +13,14 @@ dsn --> impl, itest : scn~bit-count-exact-numeric-integer~1
 dsn --> impl, itest : scn~bit-count-floating-point-integer~1
 dsn --> impl, itest : scn~bit-count-ignore-higher-bits~1
 
+## BIN
+
+dsn --> impl, itest : scn~bin-null~1
+dsn --> impl, itest : scn~bin-integer-literal~1
+dsn --> impl, itest : scn~bin-exact-numeric-integer~1
+dsn --> impl, itest : scn~bin-floating-point-integer~1
+dsn --> impl, itest : scn~bin-ignore-higher-bits~1
+
 ## CONNECTION_ID
 
 dsn --> impl, itest : scn~connection-id-returns-current-session~1
