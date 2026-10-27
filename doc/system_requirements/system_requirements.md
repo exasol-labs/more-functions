@@ -18,6 +18,7 @@ Status: approved
 
 #### Scalar Functions
 
+- [BIN](scalar_functions/bin.md)
 - [BIT_COUNT](scalar_functions/bit_count.md)
 - [DATABASE](scalar_functions/database.md)
 - [CONNECTION_ID](scalar_functions/connection_id.md)

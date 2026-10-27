@@ -25,6 +25,7 @@ Functions
 .. toctree::
     :maxdepth: 1
 
+    functions/bin
     functions/bit_count
     functions/connection_id
     functions/database

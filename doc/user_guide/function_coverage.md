@@ -46,7 +46,7 @@ Sources:
 | `ATAN2`                                | scalar   | math               | ✓      | ✓                                |
 | `AVG`                                  | set      | aggregate          | ✓      | ✓                                |
 | `BENCHMARK`                            | scalar   | information        | ✓      | x[^6]                             |
-| `BIN`                                  | scalar   | string             | ✓      |                                   |
+| `BIN`                                  | scalar   | string             | ✓      | +                                 |
 | `BINLOG_GTID_POS`                      | scalar   | information        | ✓      |                                   |
 | `BIT_AND`                              | set      | aggregate          | ✓      | ✓                                |
 | `BIT_CHECK`                            | scalar   | bitwise            |         | ✓                                |
